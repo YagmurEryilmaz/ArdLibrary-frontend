@@ -1,0 +1,16 @@
+.navbar-color{
+    background-color: #024E79;
+}
+.navbar-link{
+    color:white;
+
+}
+/* mouse over link */
+.navbar-link:hover {
+    color: rgb(153, 242, 165);
+  }
+  
+  /* selected link */
+  .navbar-link:active {
+    color: rgb(147, 145, 232);
+  }

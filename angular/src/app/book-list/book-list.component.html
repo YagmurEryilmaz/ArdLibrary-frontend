@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Publish Year</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Language</th>
+        <th scope="col">Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; let i= index" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{book.Title}}</td>
+        <td>{{book.AuthorName}}</td>
+        <td>{{book.PublishYear}}</td>
+        <td>{{book.Genre}}</td>
+        <td>{{book.Language}}</td>
+        <td>{{book.IsBorrowed}}</td>
+        <button class="btn btn-success">Borrow</button>
+      </tr>
+    </tbody>
+  </table>
