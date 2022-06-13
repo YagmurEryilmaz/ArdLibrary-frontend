@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -10,6 +9,8 @@ import { MyBooksComponent } from './my-books/my-books.component';
 import { CurrBorrowedListComponent } from './curr-borrowed-list/curr-borrowed-list.component';
 import { PrevBorrowedListComponent } from './prev-borrowed-list/prev-borrowed-list.component';
 import { LoginComponent } from './login/login.component';
+import { ShowDetailModalComponent } from './show-detail-modal/show-detail-modal.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,13 @@ import { LoginComponent } from './login/login.component';
     CurrBorrowedListComponent,
     PrevBorrowedListComponent,
     LoginComponent,
+    ShowDetailModalComponent,
+    RegisterComponent,
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

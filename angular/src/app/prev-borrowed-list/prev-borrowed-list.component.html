@@ -1,1 +1,19 @@
-<p>prev-borrowed-list works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author Name</th>
+      
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books; let i= index" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{book.Title}}</td>
+        <td>{{book.AuthorName}}</td>
+        <button class="btn btn-info my-1">Show Details</button>
+        <button class="btn btn-success mx-2 my-1 " type="submit">Borrow</button>
+      </tr>
+    </tbody>
+  </table>
