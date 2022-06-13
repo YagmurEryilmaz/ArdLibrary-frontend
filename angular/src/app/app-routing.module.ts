@@ -5,7 +5,7 @@ import {MyBooksComponent} from './my-books/my-books.component';
 import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
-  {path:"home", component:HomeComponent},
+  {path:"home", component:HomeComponent}, // can activate/ load
   {path:"my-books", component:MyBooksComponent},
   {path:"login", component:LoginComponent},
   {path:"", redirectTo:"login",pathMatch:"full"}

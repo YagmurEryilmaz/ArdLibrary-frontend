@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.api.getBooks()
       .subscribe((res: any)=> {
-        debugger;
         let t = res
       });
     
