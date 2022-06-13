@@ -11,6 +11,7 @@ import { PrevBorrowedListComponent } from './prev-borrowed-list/prev-borrowed-li
 import { LoginComponent } from './login/login.component';
 import { ShowDetailModalComponent } from './show-detail-modal/show-detail-modal.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
