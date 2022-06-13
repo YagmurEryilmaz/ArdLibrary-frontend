@@ -1,2 +1,73 @@
+.container-props
+{
+    background-color:#1F6187;
+    left: 0px;
+    top: 0px;
+    border-radius: 30px;
+    position: center;
+  
+}
+.header
+{
+    height: 100px;
+    width: 392px;
+    left: 205px;
+    top: 283px;
+    border-radius: nullpx;
+    color: #FFFFFF;
+    font-size: 96px;
+    font-weight: 400;
+    line-height: 116px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 10px;
 
+}
+input{
+    height: 41px;
+    width: 389px;
+    left: 208px;
+    top: 577px;
+    border-radius: 10px;
+    background: #D9D9D9;
+}
+label{
+    margin-top: 30px;
+    height: 22px;
+    width: 194px;
+    left: 207px;
+    top: 672px;
+    border-radius: 30px;
+
+    color: #FFFFFF;
+
+}
+button
+{
+    margin-top:30px ;
+    height: 45px;
+    width: 131px;
+    border-radius: 10px;
+    background: #4D266C;
+    color:#FFFFFF;
+
+}
+img{
+
+    height: 581px;
+    width: 600px;
+    left: 720px;
+    top: 268px;
+    border-radius: 0px;
+
+}
+
+button:active
+{
+    background-color: rgb(147, 145, 232);
+}
+button:hover
+{
+    background-color: rgb(147, 145, 232);
+}
     
