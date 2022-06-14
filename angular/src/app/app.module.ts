@@ -21,8 +21,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ShowDetailModule } from './show-detail-modal/show-detail-module';
+import { AuthService } from './auth/auth.service'
+import { AuthGuard } from './auth/auth.guard'
 
 @NgModule({
+  
   exports: [AppComponent],
   declarations: [
     AppComponent,

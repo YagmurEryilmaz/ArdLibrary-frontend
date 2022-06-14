@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginDto } from "../model/models";
 import { ApiService } from "../service/api.service";
 import { Router } from "@angular/router";
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -10,9 +11,8 @@ import { Router } from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isLogin:any = false;
 
-  constructor(private api : ApiService, private router: Router,) { }
+  constructor(private api : ApiService, private router: Router,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.signIn();
@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", res.AccessToken);
         localStorage.setItem("Email", res.Email);
         localStorage.setItem("UserId",res.UserId);
-        this.isLogin=true; 
-        localStorage.setItem("isLogin", this.isLogin) ;
+        this.authService.isLoggedIn=true; 
         this.router.navigate(["home"]);
 
       }
