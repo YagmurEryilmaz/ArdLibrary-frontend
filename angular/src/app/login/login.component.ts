@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signIn();
+    localStorage.clear();
   }
   signIn()
   {
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
       {
         console.log(res);
         localStorage.setItem("token", res.AccessToken);
-        localStorage.setItem("Email", res.Acces)
+        localStorage.setItem("Email", res.Email);
+        localStorage.setItem("UserId",res.UserId);
         this.router.navigate(["home"]);
 
       }

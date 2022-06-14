@@ -24,6 +24,12 @@
         public ExpDate!:Date;
     }
 
+    export class BorrowAddDto
+    {
+        public BookId!: number;
+        public ExpDate!:Date;
+    }
+
     export class UserDto
     {
         public Id !: number;

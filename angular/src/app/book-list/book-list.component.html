@@ -19,7 +19,7 @@
         <td>{{book.Genre}}</td>
         <td>{{book.Language}}</td>
         <td>{{book.IsBorrowed}}</td>
-        <button class="btn btn-success my-1">Borrow</button>
+        <button class="btn btn-success my-1" type="submit" (click)="addBorrow(book.Id)" >Borrow</button>
       </tr>
     </tbody>
   </table>

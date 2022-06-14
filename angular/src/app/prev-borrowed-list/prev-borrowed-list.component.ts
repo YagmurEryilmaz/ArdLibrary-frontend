@@ -7,13 +7,7 @@ import {Book} from '../model';
   styleUrls: ['./prev-borrowed-list.component.css']
 })
 export class PrevBorrowedListComponent implements OnInit {
-  books: Book[]=[
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-  ]
-  
+  books!: Book[]
 
   constructor() { }
 

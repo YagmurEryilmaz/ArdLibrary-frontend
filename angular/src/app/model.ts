@@ -1,4 +1,5 @@
 export interface Book{
+    Id:number;
     Title:string;
     AuthorName:string;
     PublishYear:number;

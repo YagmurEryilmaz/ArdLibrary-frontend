@@ -9,7 +9,8 @@ import {
     LoginDto,
     LoginResponseDto,
     Borrow,
-    BorrowDto
+    BorrowDto,
+    BorrowAddDto
 } from "../model/models";
 
 @Injectable({
@@ -32,6 +33,21 @@ import {
     getBooks(){
         return this.http.get<Array<Book>>(
           "https://localhost:7109/api/Book",
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+    getBorrowedBooks(){
+        return this.http.get<Array<Borrow>>(
+          "https://localhost:7109/api/Borrow",
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+    addBorrowedBooks(data: BorrowAddDto) {
+      console.log(data);
+        return this.http.post<BorrowDto>(
+          "https://localhost:7109/api/Borrow",
+          data,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }

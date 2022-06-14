@@ -8,11 +8,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books; let i= index" >
+      <tr *ngFor="let book of borrowedBooks; let i= index" >
         <th scope="row">{{i+1}}</th>
         <td>{{book.Title}}</td>
         <td>{{book.AuthorName}}</td>
-        <button class="btn btn-info my-1">Show Details</button>
+        <button class="btn btn-info my-1" id="book">Show Details</button>
       </tr>
     </tbody>
   </table>

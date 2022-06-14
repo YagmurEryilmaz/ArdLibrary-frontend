@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from "../model";
+import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 import {User} from "../model";
 import{ApiService} from "../service/api.service";
 
@@ -10,6 +11,7 @@ import{ApiService} from "../service/api.service";
 })
 export class BookListComponent implements OnInit {
   books!: Book[];
+  borrowData:BorrowDto=new BorrowDto();
 
   constructor(private api: ApiService) { }
 
@@ -19,9 +21,25 @@ export class BookListComponent implements OnInit {
 
   getBooks() {
     this.api.getBooks().subscribe((res: any)=> {
+      console.log(res);
       this.books = res;
     });
   
+  }
+  addBorrow(bookId:number)
+  {
+    console.log(bookId);
+      let addBorrowDto:BorrowAddDto=
+      {
+          BookId : bookId,
+          ExpDate: new Date(),
+      }
+
+ 
+    this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
+      console.log(res);
+    });
+    
   }
 
 }

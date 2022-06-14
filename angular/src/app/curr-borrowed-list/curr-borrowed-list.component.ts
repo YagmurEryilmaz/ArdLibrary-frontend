@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from '../model';
+import { Borrow, User, BorrowDto } from '../model/models';
+import{ApiService} from "../service/api.service";
 
 @Component({
   selector: 'app-curr-borrowed-list',
@@ -7,16 +9,22 @@ import {Book} from '../model';
   styleUrls: ['./curr-borrowed-list.component.css']
 })
 export class CurrBorrowedListComponent implements OnInit {
-  books: Book[]=[
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-    {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
-  ]
-
-  constructor() { }
+  borrowedBooks!: Book[]
+ 
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    this.getBorrowedBooks();
   }
+
+  getBorrowedBooks()
+  {
+    this.api.getBorrowedBooks().subscribe((res: any)=> {
+      console.log(res);
+      this.borrowedBooks = res.map((r : any) => r.Book);
+    });
+  }
+
+
 
 }
