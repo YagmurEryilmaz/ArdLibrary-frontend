@@ -12,8 +12,18 @@ import { LoginComponent } from './login/login.component';
 import { ShowDetailModalComponent } from './show-detail-modal/show-detail-modal.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatCommonModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ShowDetailModule } from './show-detail-modal/show-detail-module';
 
 @NgModule({
+  exports: [AppComponent],
   declarations: [
     AppComponent,
     BookListComponent,
@@ -23,7 +33,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CurrBorrowedListComponent,
     PrevBorrowedListComponent,
     LoginComponent,
-    ShowDetailModalComponent,
     RegisterComponent,
 
   ],
@@ -31,8 +40,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    MatCommonModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

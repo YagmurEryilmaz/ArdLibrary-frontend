@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import {MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-show-detail-modal',
   templateUrl: './show-detail-modal.component.html',
   styleUrls: ['./show-detail-modal.component.css']
 })
-export class ShowDetailModalComponent implements OnInit {
+export class ShowDetailModalComponent {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<ShowDetailModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    ) { }
 
-  ngOnInit(): void {
+  closeModal(){
+
+    this.dialogRef.close();
+
   }
-
 }
+
+

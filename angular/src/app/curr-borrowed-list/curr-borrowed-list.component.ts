@@ -28,3 +28,6 @@ export class CurrBorrowedListComponent implements OnInit {
 
 
 }
+}
+
+
