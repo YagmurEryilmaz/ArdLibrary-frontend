@@ -1,3 +1,4 @@
+<div>
 <table class="table">
     <thead>
       <tr>
@@ -12,7 +13,8 @@
         <th scope="row">{{i+1}}</th>
         <td>{{book.Title}}</td>
         <td>{{book.AuthorName}}</td>
-        <button class="btn btn-info my-1">Show Details</button>
+        <button (click)="openDetail()" class="btn btn-info my-1">Show Details</button>
       </tr>
     </tbody>
   </table>
+</div>
