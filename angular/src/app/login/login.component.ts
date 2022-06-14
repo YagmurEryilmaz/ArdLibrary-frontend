@@ -10,8 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-
+  isLogin:any = false;
 
   constructor(private api : ApiService, private router: Router,) { }
 
@@ -31,6 +30,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", res.AccessToken);
         localStorage.setItem("Email", res.Email);
         localStorage.setItem("UserId",res.UserId);
+        this.isLogin=true; 
+        localStorage.setItem("isLogin", this.isLogin) ;
         this.router.navigate(["home"]);
 
       }
