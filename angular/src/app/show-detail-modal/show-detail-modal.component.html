@@ -4,10 +4,14 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
 <div class="modal-body">
-<h1 class="title">Title: xxxx</h1>
-<h1 class="author"> Author: xxxx</h1>
-<h1 class="publishYear">Publish Year: 1111</h1>
-<h1 class="language">Language: English</h1>
+    <tr *ngFor="let book of borrowedBooks; let i= index" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{book.Title}}</td>
+        <td>{{book.AuthorName}}</td>
+        <td>{{book.PublishYear}}</td>
+        <td>{{book.Genre}}</td>
+        <td>{{book.Language}}</td>
+      </tr>
 <img class="cover" src="https://upload.wikimedia.org/wikipedia/tr/e/eb/Daftpunk_discovery.jpg">
 </div>
 <div class="modal-footer">
@@ -17,8 +21,3 @@
             </div>
         </div>
 </div>
-
-
-
-  
-  
