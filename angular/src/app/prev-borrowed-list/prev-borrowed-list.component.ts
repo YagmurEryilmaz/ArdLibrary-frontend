@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Book} from '../model';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 
 @Component({
   selector: 'app-prev-borrowed-list',
@@ -14,10 +16,15 @@ export class PrevBorrowedListComponent implements OnInit {
     {Title:"Pride and Prejudice", AuthorName:"Jane Austen", PublishYear:1765, Genre:"Romantic", Language:"English", IsBorrowed:false },
   ]
   
-
-  constructor() { }
+  constructor(private showDetailRef: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDetail(): void  {
+    let dialogRef = this.showDetailRef.open(ShowDetailModalComponent, {
+      width: '863px',
+      height: '642px',
+    });
+}
 }
