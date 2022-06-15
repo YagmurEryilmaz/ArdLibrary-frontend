@@ -22,6 +22,9 @@
     "@angular/router": "^14.0.0",
     "@material/dialog": "^14.0.0",
     "@material/form-field": "^14.0.0",
+    "alertify.js": "^1.0.12",
+    "jwt-decode": "^3.1.2",
+    "ng-alertify": "^1.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

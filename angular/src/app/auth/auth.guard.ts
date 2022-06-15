@@ -10,6 +10,8 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):any{
     let isLoggedIn = this.authService.isAuthenticated();
+    
+    
     if (isLoggedIn){
       return true
     } else {

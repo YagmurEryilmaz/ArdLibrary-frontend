@@ -12,16 +12,17 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 })
 export class CurrBorrowedListComponent implements OnInit {
   borrowedBooks!: Book[]
- 
+  id = parseInt(localStorage['UserId']);
+
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
 
   ngOnInit(): void {
-    this.getBorrowedBooks();
+    this.getBorrowedBooksById(this.id);
   }
 
-  getBorrowedBooks()
+  getBorrowedBooksById(id:any)
   {
-    this.api.getBorrowedBooks().subscribe((res: any)=> {
+    this.api.getBorrowedBooksById(id).subscribe((res: any)=> {
       if(res.map((r:any)=> r.Book.ExpDate < r.Book.ExpDate + 7))
       {
         console.log(res);

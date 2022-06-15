@@ -3,6 +3,8 @@ import { LoginDto } from "../model/models";
 import { ApiService } from "../service/api.service";
 import { Router } from "@angular/router";
 import { AuthService } from '../auth/auth.service';
+import jwt_decode from 'jwt-decode';
+import { AlertifyService } from '../service/alertify-service.service';
 
 
 @Component({
@@ -12,7 +14,10 @@ import { AuthService } from '../auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private api : ApiService, private router: Router,private authService:AuthService) { }
+  token!:any;
+  tokeInfo!:any;
+
+  constructor(private api : ApiService, private router: Router,private authService:AuthService,private alertifyService:AlertifyService) { }
 
   ngOnInit(): void {
     this.signIn();
@@ -25,12 +30,17 @@ export class LoginComponent implements OnInit {
     loginRequest.Password= (<HTMLInputElement>document.getElementById("password")).value;
     this.api.login(loginRequest).subscribe((res:any)=> {
       if(res)
-      {
+      { 
+        
         console.log(res);
-        localStorage.setItem("token", res.AccessToken);
-        localStorage.setItem("Email", res.Email);
-        localStorage.setItem("UserId",res.UserId);
+        this.token =res.AccessToken;
+        this.tokeInfo=this.getDecodedAccessToken(this.token);
+        localStorage.setItem("token",res.AccessToken);
+        localStorage.setItem("Email", this.tokeInfo.Email);
+        localStorage.setItem("UserId",this.tokeInfo.nameid);
+        console.log(this.tokeInfo.nameid);
         this.authService.isLoggedIn=true; 
+        localStorage.setItem("isLoggedIn", "1");
         this.router.navigate(["home"]);
 
       }
@@ -39,5 +49,13 @@ export class LoginComponent implements OnInit {
         alert("Something went wrong!!")
       }
   );
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
   }
 }

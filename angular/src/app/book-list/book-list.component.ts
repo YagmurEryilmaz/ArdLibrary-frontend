@@ -3,6 +3,8 @@ import {Book} from "../model";
 import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 import {User} from "../model";
 import{ApiService} from "../service/api.service";
+import { AlertifyService } from '../service/alertify-service.service';
+
 
 @Component({
   selector: 'book-list',
@@ -13,7 +15,7 @@ export class BookListComponent implements OnInit {
   books!: Book[];
   borrowData:BorrowDto=new BorrowDto();
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private alertify:AlertifyService) { }
 
   ngOnInit(): void {
     this.getBooks();
@@ -38,6 +40,8 @@ export class BookListComponent implements OnInit {
  
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
       console.log(res);
+    }, (err:any)=> {
+      alert("Book is already borrowed!!");
     });
     
   }
