@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input'
 import { ShowDetailModalComponent } from './show-detail-modal.component';
+import { CommonModule } from '@angular/common';
   
 @NgModule({
   declarations: [ShowDetailModalComponent],
@@ -17,7 +18,8 @@ import { ShowDetailModalComponent } from './show-detail-modal.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    CommonModule
   ],
 })
 export class ShowDetailModule {}

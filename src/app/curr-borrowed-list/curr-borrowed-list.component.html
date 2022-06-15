@@ -5,7 +5,6 @@
         <th scope="col">#</th>
         <th scope="col">Title</th>
         <th scope="col">Author Name</th>
-
       </tr>
     </thead>
     <tbody>
@@ -13,7 +12,7 @@
         <th scope="row">{{i+1}}</th>
         <td>{{book.Title}}</td>
         <td>{{book.AuthorName}}</td>
-        <button (click)="openDetail()" class="btn btn-info my-1">Show Details</button>
+        <button (click)="openDetail(book.Id)" class="btn btn-info my-1">Show Details</button>
       </tr>
     </tbody>
   </table>

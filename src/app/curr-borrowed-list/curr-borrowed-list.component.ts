@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import {Book} from '../model';
 import { Borrow, User, BorrowDto } from '../model/models';
 import{ApiService} from "../service/api.service";
@@ -12,11 +13,12 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 })
 export class CurrBorrowedListComponent implements OnInit {
   borrowedBooks!: Book[]
- 
+
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
 
   ngOnInit(): void {
     this.getBorrowedBooks();
+    
   }
 
   getBorrowedBooks()
@@ -29,13 +31,14 @@ export class CurrBorrowedListComponent implements OnInit {
       }
     });
   }
-  openDetail():void
+  openDetail(bookId:number):void
   {
     let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
     {
       width: "863px",
       height:"642px",
     });
+
   }
 }
 
