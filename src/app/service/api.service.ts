@@ -51,5 +51,14 @@ import {
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
+
+      getBorrowedBooksById(id:number){
+        console.log(id);
+        return this.http.get<Array<Borrow>>(
+          "https://localhost:7109/api/Borrow/GetBorrowedBooksById/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
     
     }

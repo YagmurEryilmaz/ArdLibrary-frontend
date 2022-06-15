@@ -6,6 +6,8 @@ export class AuthService {
   isLoggedIn = false;
   constructor() { }
 isAuthenticated(){
-    return this.isLoggedIn;
+let d= localStorage.getItem("isLoggedIn");
+
+    return d=="1";
   }
 }
