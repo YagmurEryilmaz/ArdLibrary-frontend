@@ -68,5 +68,10 @@ import {
         );
       }
 
-    
+      deleteBorrowedBook(id: number) {
+        return this.http.delete<any>(
+          "https://localhost:7109/api/Borrow/" + id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
     }
