@@ -60,5 +60,13 @@ import {
         );
       }
 
+      getBookById(id:number){
+        console.log(id);
+        return this.http.get<Array<Book>>(
+          "https://localhost:7109/api/Borrow/GetBookById/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
     
     }
