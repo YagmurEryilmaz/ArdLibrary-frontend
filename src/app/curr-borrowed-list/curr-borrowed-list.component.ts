@@ -31,6 +31,16 @@ export class CurrBorrowedListComponent implements OnInit {
       }
     });
   }
+
+  deleteBorrowedBook(id:any)
+  {
+    this.api.deleteBorrowedBook(id).subscribe((res:any)=>
+    {
+      alert("Borrowed book is successfully returned!!")
+    },(err:any)=> {
+      alert("Something went wrong!!")
+    });
+  }
  
   openDetail(bookId:any):void
   {
@@ -43,11 +53,6 @@ export class CurrBorrowedListComponent implements OnInit {
     });
 
   }
-
-  deleteBorrowedBook(id: number) {
-  
-     
-}
 
 
 }

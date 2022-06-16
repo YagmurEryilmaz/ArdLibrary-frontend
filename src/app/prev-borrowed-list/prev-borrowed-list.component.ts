@@ -3,6 +3,7 @@ import {Book} from '../model';
 import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 import { ApiService } from '../service/api.service';
+import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 
 @Component({
   selector: 'app-prev-borrowed-list',
@@ -27,6 +28,25 @@ export class PrevBorrowedListComponent implements OnInit {
         this.books = res.map((r : any) => r.Book);
       }
     });
+  }
+
+  addBorrow(bookId:number)
+  {
+    console.log(bookId);
+      let addBorrowDto:BorrowAddDto=
+      {
+          BookId : bookId,
+          ExpDate: new Date(),
+      }
+
+ 
+    this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
+      console.log(res);
+      alert("Book is successfully borrowed!!")
+    }, (err:any)=> {
+      alert("Book is already borrowed!!");
+    });
+    
   }
 
   openDetail(): void  {

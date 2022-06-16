@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     loginRequest.Email= (<HTMLInputElement>document.getElementById("email")).value;
     loginRequest.Password= (<HTMLInputElement>document.getElementById("password")).value;
     this.api.login(loginRequest).subscribe((res:any)=> {
-      if(res)
+      if(res!=null)
       { 
         
         console.log(res);
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["home"]);
 
       }
-      else{alert("User not found!!")}
+      else alert("User not found")
     }, (err:any)=> {
         alert("Something went wrong!!")
       }
