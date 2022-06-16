@@ -12,7 +12,7 @@
         <th scope="row">{{i+1}}</th>
         <td>{{book.Title}}</td>
         <td>{{book.AuthorName}}</td>
-        <button class="btn btn-info my-1" (click)="openDetail()">Show Details</button>
+        <button class="btn btn-info my-1" (click)="openDetail(book.Id)">Show Details</button>
         <button id="borrowButton" class="btn  bs-btn-color-success btn-success mx-2 my-1  " type="submit"  (click)="addBorrow(book.Id)">Borrow</button>
       </tr>
     </tbody>

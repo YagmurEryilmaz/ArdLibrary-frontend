@@ -44,12 +44,15 @@ export class PrevBorrowedListComponent implements OnInit {
       console.log(res);
       alert("Book is successfully borrowed!!")
     }, (err:any)=> {
-      alert("Book is already borrowed!!");
+      alert("You have already borrowed this book!!");
     });
     
   }
 
-  openDetail(): void  {
+  openDetail(bookId:any): void  {
+
+    localStorage.setItem("bookId",bookId)
+    
     let dialogRef = this.showDetailRef.open(ShowDetailModalComponent, {
     });
 }
