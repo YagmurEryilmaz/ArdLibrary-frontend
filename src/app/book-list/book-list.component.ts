@@ -69,6 +69,6 @@ export class BookListComponent implements OnInit {
 
   }
   search(value: string): void {
-    this.books = this.allBooks.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value));
+    this.books = this.allBooks.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value));
   }
 }
