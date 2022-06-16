@@ -6,6 +6,7 @@ import{ApiService} from "../service/api.service";
 import { AlertifyService } from '../service/alertify-service.service';
 import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {SharedDataService} from '../service/SharedDataService';
 
 
 @Component({
@@ -15,9 +16,16 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class BookListComponent implements OnInit {
   books!: Book[];
+  allBooks!: Book[];
   borrowData:BorrowDto=new BorrowDto();
+  filter:any;
 
-  constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog) { }
+  constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService) { 
+    sharedComp.currentMessage.subscribe((res:any)=> {
+      this.filter = res;
+      this.search(this.filter);
+    })
+  }
 
   ngOnInit(): void {
     this.getBooks();
@@ -27,6 +35,7 @@ export class BookListComponent implements OnInit {
     this.api.getBooks().subscribe((res: any)=> {
       console.log(res);
       this.books = res;
+      this.allBooks =res;
     });
   
   }
@@ -59,5 +68,7 @@ export class BookListComponent implements OnInit {
     });
 
   }
-
+  search(value: string): void {
+    this.books = this.allBooks.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value));
+  }
 }

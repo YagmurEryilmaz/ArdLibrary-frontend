@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ShowDetailModule } from './show-detail-modal/show-detail-module';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
+import { ListFilterPipe } from './listFilterPipe';
 
 
 @NgModule({
@@ -38,6 +39,8 @@ import { AuthGuard } from './auth/auth.guard';
     PrevBorrowedListComponent,
     LoginComponent,
     RegisterComponent,
+    ListFilterPipe,
+
     
 
   ],
