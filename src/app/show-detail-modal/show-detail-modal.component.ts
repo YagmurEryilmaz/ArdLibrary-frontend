@@ -12,8 +12,7 @@ import{ApiService} from "../service/api.service";
 })
 export class ShowDetailModalComponent implements OnInit {
   borrowedBooks:Array<Book>=new Array<Book>();
-  
-  specificBook!: Book;
+  specificBook!:Book;
   id =parseInt( localStorage['bookId']);
 
   
@@ -24,7 +23,7 @@ export class ShowDetailModalComponent implements OnInit {
     ngOnInit(): void {
 
       this.getBookById(this.id);
-      console.log(this.id);
+      console.log("helloooo",this.id);
     }
 
   getBorrowedBooks()
@@ -35,13 +34,15 @@ export class ShowDetailModalComponent implements OnInit {
 
     });
   }
-  getBookById(id:number){
-  
-    this.api.getBookById(id).subscribe((res:any)=> {
+  getBookById(id:any){
 
-      this.specificBook  = res;
-      
-    })
+    this.api.getBookById(id).subscribe((res:any)=> {
+      this.specificBook=res;
+      console.log(res);
+
+    });
+     
+  
     
   }
 

@@ -62,8 +62,8 @@ import {
 
       getBookById(id:number){
         console.log(id);
-        return this.http.get<Array<Book>>(
-          "https://localhost:7109/api/Borrow/GetBookById/" +id,
+        return this.http.get<Book>(
+          `https://localhost:7109/api/Book/GetBookById/${id}`,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }

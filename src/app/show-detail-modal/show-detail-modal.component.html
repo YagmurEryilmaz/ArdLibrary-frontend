@@ -1,14 +1,30 @@
 <div>
-    <table class="table">
-        <tbody>
-            <tr *ngFor="let book of borrowedBooks; let i= index" >
-                <td>{{book.AuthorName}}</td>
-                <td>{{book.Title}}</td>
-                <td>{{book.PublishYear}}</td>
-                <td>{{book.Genre}}</td>
-                <td>{{book.Language}}</td>
-            </tr>
-        </tbody>
-      </table>
-      <img src="https://kbimages1-a.akamaihd.net/f54c3cdb-28af-41e0-b439-f44ad8872125/353/569/90/False/olaganustu-bir-gece-4.jpg" alt="">
+    <div class="row">
+        <div class="col-5">
+            <img src="https://kbimages1-a.akamaihd.net/f54c3cdb-28af-41e0-b439-f44ad8872125/353/569/90/False/olaganustu-bir-gece-4.jpg" alt="">
+        </div>
+        <div class="col-6 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th scope="col">Title</th>
+                      <th scope="col">Author Name</th>
+                      <th scope="col">Publish Year</th>
+                      <th scope="col">Genre</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                        <td>{{specificBook.Title}}</td>
+                        <td>{{specificBook.AuthorName}}</td>
+                        <td>{{specificBook.PublishYear}}</td>
+                        <td>{{specificBook.Genre}}</td>
+                </tbody>
+              </table>
+        </div>
+       
+     
+          
+
+    </div>
+   
     </div>
