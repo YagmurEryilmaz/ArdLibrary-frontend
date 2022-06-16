@@ -48,8 +48,8 @@ export class CurrBorrowedListComponent implements OnInit {
 
     let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
     {
-      width: "863px",
-      height:"642px",
+      width: "890px",
+      height:"auto",
     });
 
   }

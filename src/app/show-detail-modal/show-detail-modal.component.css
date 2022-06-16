@@ -1,8 +1,9 @@
 ::ng-deep .mat-dialog-container{
 
-  background: #ffffff;
+  background: #c7c9cf;
   width: 863px;
   height: 642px;
+  object-fit: contain;
 
 }
 
@@ -12,5 +13,23 @@ width: 142px;
 height: 235px;
 left: 419px;
 top: 52px;
+
+}
+
+#xxx{
+
+width: 421;
+height: 576;
+
+
+}
+th{
+
+  font-size: 16px;
+}
+
+td{
+
+padding-left: 20px;
 
 }
