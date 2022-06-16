@@ -12,13 +12,19 @@ import{ApiService} from "../service/api.service";
 })
 export class ShowDetailModalComponent implements OnInit {
   borrowedBooks:Array<Book>=new Array<Book>();
+  
+  specificBook!: Book;
+  id =parseInt( localStorage['bookId']);
+
+  
 
   constructor(public dialogRef: MatDialogRef<ShowDetailModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private api:ApiService) { }
 
     ngOnInit(): void {
 
-      this.getBorrowedBooks();
+      this.getBookById(this.id);
+      console.log(this.id);
     }
 
   getBorrowedBooks()
@@ -28,6 +34,15 @@ export class ShowDetailModalComponent implements OnInit {
         this.borrowedBooks = res.map((r:any) => r.Book);
 
     });
+  }
+  getBookById(id:number){
+  
+    this.api.getBookById(id).subscribe((res:any)=> {
+
+      this.specificBook  = res;
+      
+    })
+    
   }
 
   closeModal(){

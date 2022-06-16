@@ -12,7 +12,7 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
   styleUrls: ['./curr-borrowed-list.component.css']
 })
 export class CurrBorrowedListComponent implements OnInit {
-  borrowedBooks!: Book[]
+  borrowedBooks!: Book[];
   id = parseInt(localStorage['UserId']);
 
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
@@ -31,8 +31,16 @@ export class CurrBorrowedListComponent implements OnInit {
       }
     });
   }
-  openDetail(bookId:number):void
+ 
+ 
+
+
+  
+
+  openDetail(bookId:any):void
   {
+    localStorage.setItem("bookId",bookId)
+
     let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
     {
       width: "863px",
