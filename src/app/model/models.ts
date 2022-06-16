@@ -47,6 +47,8 @@
         public  Genre!:string ;
         public  Language!:string ;
         public IsBorrowed!:boolean;
+        public ImageUrl:string ="";
+        public Subject!:string;
     }
 
     export class Borrow

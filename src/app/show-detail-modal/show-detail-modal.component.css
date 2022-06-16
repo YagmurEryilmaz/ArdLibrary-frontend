@@ -1,109 +1,16 @@
 ::ng-deep .mat-dialog-container{
 
-  background: #ffffff
+  background: #ffffff;
+  width: 863px;
+  height: 642px;
 
 }
 
-.title{
+#header{
 
- 
-position: absolute;
-width: 919px;
-height: 51px;
-left: calc(50% - 919px/2 + 522px);
-top: 196px;
-
-font-family: 'IBM Plex Sans Devanagari';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;
-/* or 125% */
-
-
-color: #000000;
-}
-
-.author{
-
-position: absolute;
-width: 919px;
-height: 52px;
-left: calc(50% - 919px/2 + 522px);
-top: 259px;
-
-font-family: 'IBM Plex Sans Devanagari';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;
-/* or 125% */
-
-
-color: #000000;
-}
-
-.publishYear{
-  position: absolute;
-width: 919px;
-height: 51px;
-left: calc(50% - 919px/2 + 522px);
-top: 330px;
-
-font-family: 'IBM Plex Sans Devanagari';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;
-/* or 125% */
-
-
-color: #000000;
-
-
-}
-
-.language{
-
-  position: absolute;
-width: 919px;
-height: 51px;
-left: calc(50% - 919px/2 + 522px);
-top: 395px;
-
-font-family: 'IBM Plex Sans Devanagari';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 40px;
-/* or 125% */
-
-
-color: #000000;
-
-  
-  color: #000000;
-  
-
-}
-
-.cover{
-
-position: absolute;
-width: 374px;
-height: 550px;
-left: 400px;
-top: 100px;
-
-}
-
-.closeButton{
-
-position: absolute;
-width: 37px;
-height: 32px;
-left: 1150px;
-top: 70px;
-
+width: 142px;
+height: 235px;
+left: 419px;
+top: 52px;
 
 }

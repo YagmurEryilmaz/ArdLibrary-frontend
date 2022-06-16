@@ -31,8 +31,6 @@ export class PrevBorrowedListComponent implements OnInit {
 
   openDetail(): void  {
     let dialogRef = this.showDetailRef.open(ShowDetailModalComponent, {
-      width: '863px',
-      height: '642px',
     });
 }
 }
