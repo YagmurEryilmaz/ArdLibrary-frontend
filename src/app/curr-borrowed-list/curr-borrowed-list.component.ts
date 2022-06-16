@@ -32,11 +32,6 @@ export class CurrBorrowedListComponent implements OnInit {
     });
   }
  
- 
-
-
-  
-
   openDetail(bookId:any):void
   {
     localStorage.setItem("bookId",bookId)
@@ -48,7 +43,11 @@ export class CurrBorrowedListComponent implements OnInit {
     });
 
   }
+
+  deleteBorrowedBook(id: number) {
+  
+     
 }
 
 
-
+}
