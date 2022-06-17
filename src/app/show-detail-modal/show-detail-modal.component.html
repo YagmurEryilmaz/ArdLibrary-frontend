@@ -1,8 +1,9 @@
 <div  class=" container row">
+  <div> <button class="btn btn-close" style="float:right" (click)="closeModal()"></button></div>
   <div *ngIf="specificBook && specificBook.ImageUrl" class="col-6 my-3">
     <img src="{{specificBook.ImageUrl}}" alt="" style="width: 100% ; height: auto; object-fit: contain;">
   </div>
-  <div class="col-6 my-4">
+  <div class="col-6" style="margin-top: 20px;">
     <table *ngIf="specificBook">
       <tr>
         <th>Title:</th>
@@ -24,18 +25,14 @@
         <th>Language: </th>
       
           <td>{{specificBook.Language}}</td>
-       
-        
       </tr>
-     
-     
         <th>Subject: </th>
         <div class="my-4">
           <td>{{specificBook.Subject}}</td>
         </div>
     </table>
-    <button class="btn btn-danger pull-right" (click)="closeModal()">Close</button>
+   
   </div>
-  
+ 
 </div>
 
