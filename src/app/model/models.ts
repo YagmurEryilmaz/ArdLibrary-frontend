@@ -26,6 +26,7 @@
 
     export class BorrowAddDto
     {
+        public UserId!: number;
         public BookId!: number;
         public ExpDate!:Date;
     }

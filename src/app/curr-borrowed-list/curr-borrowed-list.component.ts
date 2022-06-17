@@ -24,11 +24,10 @@ export class CurrBorrowedListComponent implements OnInit {
   getBorrowedBooksById(id:any)
   {
     this.api.getBorrowedBooksById(id).subscribe((res: any)=> {
-      if(res.map((r:any)=> r.Book.ExpDate < r.Book.ExpDate + 7))
-      {
+   
         console.log(res);
         this.borrowedBooks = res.map((r : any) => r.Book);
-      }
+    
     });
   }
 

@@ -12,29 +12,29 @@ import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 })
 export class PrevBorrowedListComponent implements OnInit {
   books!: Book[]
-  
+  id = parseInt(localStorage['UserId']);
   constructor(private showDetailRef: MatDialog, private api:ApiService) { }
 
   ngOnInit(): void {
-    this.getBorrowedBooks()
+    this.getBorrowedBooksById(this.id)
   }
-
-  getBorrowedBooks()
+  getBorrowedBooksById(id:any)
   {
-    this.api.getBorrowedBooks().subscribe((res: any)=> {
-      if(res.map((r:any)=> r.Book.ExpDate > r.Book.ExpDate + 7*((1000 * 3600 * 24))))
-      {
+    this.api.getBorrowedBooksById(id).subscribe((res: any)=> {
+   
         console.log(res);
         this.books = res.map((r : any) => r.Book);
-      }
+    
     });
   }
+ 
 
   addBorrow(bookId:number)
   {
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
       {
+          UserId: this.id,
           BookId : bookId,
           ExpDate: new Date(),
       }

@@ -19,6 +19,7 @@ export class BookListComponent implements OnInit {
   allBooks!: Book[];
   borrowData:BorrowDto=new BorrowDto();
   filter:any;
+  id = parseInt(localStorage['UserId']);
 
   constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService) { 
     sharedComp.currentMessage.subscribe((res:any)=> {
@@ -44,6 +45,7 @@ export class BookListComponent implements OnInit {
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
       {
+          UserId:this.id,
           BookId : bookId,
           ExpDate: new Date(),
       }
