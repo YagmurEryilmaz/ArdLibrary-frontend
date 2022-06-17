@@ -57,7 +57,8 @@
         public Id !: number;
         public UserId !: number;
         public BookId !: number;
-        public ExpDate!:Date;
+        public ExpDate!:any;
+        public Book!: Book
     }
 
     export class User

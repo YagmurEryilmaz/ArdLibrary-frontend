@@ -11,8 +11,10 @@ import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
   styleUrls: ['./prev-borrowed-list.component.css']
 })
 export class PrevBorrowedListComponent implements OnInit {
-  books!: Book[]
+  books!: Book[]| undefined
   id = parseInt(localStorage['UserId']);
+  todaysDate!:Date
+  
   constructor(private showDetailRef: MatDialog, private api:ApiService) { }
 
   ngOnInit(): void {
@@ -20,11 +22,11 @@ export class PrevBorrowedListComponent implements OnInit {
   }
   getBorrowedBooksById(id:any)
   {
-    this.api.getBorrowedBooksById(id).subscribe((res: any)=> {
-   
-        console.log(res);
-        this.books = res.map((r : any) => r.Book);
-    
+    this.todaysDate= new Date();
+    this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
+        res.forEach(r => console.log(new Date(r.ExpDate)));
+        console.log(this.todaysDate.toISOString());
+        this.books = res.filter(r => new Date(r.ExpDate)< this.todaysDate).map((t: Borrow) => t.Book);
     });
   }
  
