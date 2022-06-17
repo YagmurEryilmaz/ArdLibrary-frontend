@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     loginRequest.Email= (<HTMLInputElement>document.getElementById("email")).value;
     loginRequest.Password= (<HTMLInputElement>document.getElementById("password")).value;
     this.api.login(loginRequest).subscribe((res:any)=> {
-      if(res!=null)
+      if(res)
       { 
         
         console.log(res);
