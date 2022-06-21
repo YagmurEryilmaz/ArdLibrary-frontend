@@ -48,6 +48,7 @@ export class PrevBorrowedListComponent implements OnInit {
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
       console.log(res);
       alert("Book is successfully Borrowed!!")
+      window.location.reload();
     }, (err:any)=> {
       alert("You have already borrowed this book!!");
     });

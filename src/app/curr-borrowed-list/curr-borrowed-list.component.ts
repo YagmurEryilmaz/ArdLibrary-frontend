@@ -38,6 +38,7 @@ export class CurrBorrowedListComponent implements OnInit {
     this.api.deleteBorrowedBook(id).subscribe((res:any)=>
     {
       alert("Borrowed book is successfully returned!!")
+      window.location.reload();
     },(err:any)=> {
       alert("Something went wrong!!")
     });
