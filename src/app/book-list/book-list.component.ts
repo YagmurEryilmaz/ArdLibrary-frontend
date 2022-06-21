@@ -33,8 +33,6 @@ export class BookListComponent implements OnInit {
   
   }
 
- 
-
   getBooks() {
     this.api.getBooks().subscribe((res: any)=> {
       console.log(res);
@@ -58,7 +56,7 @@ export class BookListComponent implements OnInit {
       console.log(res);
       alert("Book is successfully borrowed!!")
     }, (err:any)=> {
-      alert("Book is not available!!");
+      alert("You cannot borrow more than 5 books!!");
     });
     
   }

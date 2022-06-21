@@ -52,6 +52,14 @@
         public Subject!:string;
     }
 
+    export class FilterDto
+    {
+        public  AuthorName!:string ;
+        public  PublishYear!:string ;
+        public  Genre!:string ;
+        public  Language!:string ;
+    }
+
     export class Borrow
     {
         public Id !: number;

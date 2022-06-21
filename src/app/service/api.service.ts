@@ -11,7 +11,8 @@ import {
     Borrow,
     BorrowDto,
     BorrowAddDto,
-    PrevBorrow
+    PrevBorrow,
+    FilterDto
 } from "../model/models";
 
 @Injectable({
@@ -38,7 +39,8 @@ import {
         );
       }
 
-    getFilteredBooks(){
+    getFilteredBooks(filterReq: FilterDto){
+      console.log(filterReq);
         return this.http.get<Array<Book>>(
           "https://localhost:7109/api/Book/Filter",
           { headers: new HttpHeaders(this.httpOptions) }

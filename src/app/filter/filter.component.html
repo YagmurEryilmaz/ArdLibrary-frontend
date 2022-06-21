@@ -3,29 +3,29 @@
     <div class="row">
       <div class="form-group col-md-3">
         <label for="inputCity">Author Name</label>
-        <input type="text" class="form-control" id="authorName">
+        <input type="text" id="authorName" class="form-control" id="authorName">
       </div>
       <div class="form-group col-md-3">
         <label for="inputCity">Publish Year</label>
-        <input type="text" class="form-control" id="publishYear">
+        <input type="text" id="publishYear"  class="form-control" id="publishYear">
       </div>
     </div>
     <div class="row ">
       <div class="form-group col-md-3">
         <label for="inputState">Genre</label>
-        <select id="inputState" class="form-control">
+        <select id="genre" class="form-control">
           <option selected>Choose...</option>
           <option>...</option>
         </select>
       </div>
       <div class="form-group col-md-3">
         <label for="inputState">Language</label>
-        <select id="inputState" class="form-control">
+        <select id="language" class="form-control">
           <option selected>Choose...</option>
           <option>...</option>
         </select>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary my-2">Apply</button>
+    <button type="submit" class="btn btn-primary my-2" (click)="filter()">Apply</button>
   </form>
 </div>
