@@ -11,7 +11,7 @@ import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
   styleUrls: ['./prev-borrowed-list.component.css']
 })
 export class PrevBorrowedListComponent implements OnInit {
-  books!: Book[]| undefined
+  books!: Book[] | undefined
   expDate!:number[]
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
