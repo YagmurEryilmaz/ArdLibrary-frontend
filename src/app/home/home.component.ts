@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{ApiService} from "../service/api.service";
+import {Book} from '../model';
+
+
 
 @Component({
   selector: 'home',
@@ -8,7 +11,11 @@ import{ApiService} from "../service/api.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private api: ApiService) { }
+ 
+
+  constructor( private api: ApiService) {
+
+   }
 
   ngOnInit(): void {
     this.api.getBooks()
@@ -17,5 +24,7 @@ export class HomeComponent implements OnInit {
       });
     
   }
+
+  
 
 }

@@ -15,16 +15,16 @@ import {SharedDataService} from '../service/SharedDataService';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  books!: Book[];
+  books!:Book[];
   allBooks!: Book[];
   borrowData:BorrowDto=new BorrowDto();
   filter:any;
   id = parseInt(localStorage['UserId']);
 
   constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService) { 
-    sharedComp.currentMessage.subscribe((res:any)=> {
+    sharedComp.currentMessage.subscribe((res:string)=> {
       this.filter = res;
-      this.search(this.filter);
+      this.search(res);
     })
   }
 
@@ -45,7 +45,7 @@ export class BookListComponent implements OnInit {
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
       {
-          UserId:this.id,
+          UserId: this.id,
           BookId : bookId,
           ExpDate: new Date(),
       }
@@ -71,6 +71,6 @@ export class BookListComponent implements OnInit {
 
   }
   search(value: string): void {
-    this.books = this.allBooks.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value));
+    this.books = this.allBooks?.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value));
   }
 }

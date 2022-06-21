@@ -40,6 +40,7 @@ import { ListFilterPipe } from './listFilterPipe';
     LoginComponent,
     RegisterComponent,
     ListFilterPipe,
+    
 
     
 

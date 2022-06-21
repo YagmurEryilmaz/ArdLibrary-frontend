@@ -22,3 +22,11 @@ export interface Borrow
     Id:number;
     ExpDate:Date;
 }
+
+export interface PrevBorrow
+{
+    Title:string;
+    AuthorName:string;
+    Id:number;
+    ExpDate:Date;
+}

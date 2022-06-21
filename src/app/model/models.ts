@@ -61,6 +61,15 @@
         public Book!: Book
     }
 
+    export class PrevBorrow
+    {
+        public Id !: number;
+        public UserId !: number;
+        public BookId !: number;
+        public ExpDate!:any;
+        public Book!: Book
+    }
+
     export class User
     {
         public Id !: number;
