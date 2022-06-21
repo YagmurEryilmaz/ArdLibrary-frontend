@@ -8,13 +8,13 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {SharedDataService} from '../service/SharedDataService';
 
-
 @Component({
   selector: 'book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+  
   books!:Book[];
   allBooks!: Book[];
   borrowData:BorrowDto=new BorrowDto();
@@ -30,7 +30,10 @@ export class BookListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBooks();
+  
   }
+
+ 
 
   getBooks() {
     this.api.getBooks().subscribe((res: any)=> {
@@ -71,6 +74,7 @@ export class BookListComponent implements OnInit {
 
   }
   search(value: string): void {
-    this.books = this.allBooks?.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value));
+    this.books = this.allBooks?.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value) || val.PublishYear.toString().includes(value));
   }
 }
+ 

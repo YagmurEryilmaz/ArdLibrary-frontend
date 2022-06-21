@@ -4,6 +4,7 @@ import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 import { ApiService } from '../service/api.service';
 import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
+import { SharedDataService } from '../service/SharedDataService';
 
 @Component({
   selector: 'app-prev-borrowed-list',
@@ -11,13 +12,20 @@ import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
   styleUrls: ['./prev-borrowed-list.component.css']
 })
 export class PrevBorrowedListComponent implements OnInit {
-  books!: Book[] | undefined
+  books!: Borrow[] | undefined
+  allBooks!: Borrow[];
   expDate!:number[]
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
+  filter:any;
  
   
-  constructor(private showDetailRef: MatDialog, private api:ApiService) { }
+  constructor(private showDetailRef: MatDialog, private api:ApiService,private sharedComp:SharedDataService) {
+    sharedComp.currentMessage.subscribe((res:string)=> {
+      this.filter = res;
+      this.search(res);
+    })
+   }
 
   ngOnInit(): void {
     this.getPrevBorrowedBooksById(this.id)
@@ -28,8 +36,9 @@ export class PrevBorrowedListComponent implements OnInit {
    
     this.api.getPrevBorrowedBooksById(id).subscribe((res: Borrow[])=> {
         //deneme: res.forEach(r => console.log(new Date(r.ExpDate).getDate(), "hello", new Date(r.ExpDate).getDate()+2));
-        this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate()).map((t: Borrow) => t.Book);
+        this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
         //this.expDate = res.map(r=> new Date(r.ExpDate).getDate());
+        this.allBooks =res;
         
     });
   }
@@ -61,5 +70,9 @@ export class PrevBorrowedListComponent implements OnInit {
     
     let dialogRef = this.showDetailRef.open(ShowDetailModalComponent, {
     });
+}
+
+search(value: string): void {
+  this.books = this.allBooks?.filter((val) => val.Book.Title.toLowerCase().includes(value) || val.Book.AuthorName.toLowerCase().includes(value));
 }
 }

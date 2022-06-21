@@ -11,14 +11,14 @@ export class MyBooksComponent implements OnInit {
    filter:any;
 
   constructor( private api: ApiService, private sharedComp:SharedDataService) { 
-    sharedComp.currentMessage.subscribe((res:any)=> {
-      this.filter = res;
-    })
+   
   }
 
   ngOnInit(): void {
     this.api.getBooks();
   }
+
+  
 
 
 }

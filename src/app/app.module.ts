@@ -24,6 +24,7 @@ import { ShowDetailModule } from './show-detail-modal/show-detail-module';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { ListFilterPipe } from './listFilterPipe';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ListFilterPipe } from './listFilterPipe';
     LoginComponent,
     RegisterComponent,
     ListFilterPipe,
+    FilterComponent,
     
 
     
