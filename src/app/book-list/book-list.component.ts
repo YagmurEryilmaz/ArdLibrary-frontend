@@ -45,7 +45,7 @@ export class BookListComponent implements OnInit {
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
       {
-          UserId:this.id,
+          UserId: this.id,
           BookId : bookId,
           ExpDate: new Date(),
       }

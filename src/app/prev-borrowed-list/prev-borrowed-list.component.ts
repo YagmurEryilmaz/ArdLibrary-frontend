@@ -12,26 +12,29 @@ import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 })
 export class PrevBorrowedListComponent implements OnInit {
   books!: Book[]| undefined
+  expDate!:number[]
   id = parseInt(localStorage['UserId']);
-  todaysDate!:Date
+  todaysDate!:Date;
+ 
   
   constructor(private showDetailRef: MatDialog, private api:ApiService) { }
 
   ngOnInit(): void {
-    this.getBorrowedBooksById(this.id)
+    this.getPrevBorrowedBooksById(this.id)
   }
-  getBorrowedBooksById(id:any)
+  getPrevBorrowedBooksById(id:any)
   {
     this.todaysDate= new Date();
-    this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
-        res.forEach(r => console.log(new Date(r.ExpDate)));
-        console.log(this.todaysDate.toISOString());
-        this.books = res.filter(r => new Date(r.ExpDate)< this.todaysDate).map((t: Borrow) => t.Book);
+   
+    this.api.getPrevBorrowedBooksById(id).subscribe((res: Borrow[])=> {
+        //deneme: res.forEach(r => console.log(new Date(r.ExpDate).getDate(), "hello", new Date(r.ExpDate).getDate()+2));
+        this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate()).map((t: Borrow) => t.Book);
+        //this.expDate = res.map(r=> new Date(r.ExpDate).getDate());
+        
     });
   }
- 
 
-  addBorrow(bookId:number)
+   addBorrow(bookId:number)
   {
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
@@ -44,7 +47,7 @@ export class PrevBorrowedListComponent implements OnInit {
  
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
       console.log(res);
-      alert("Book is successfully borrowed!!")
+      alert("Book is successfully Borrowed!!")
     }, (err:any)=> {
       alert("You have already borrowed this book!!");
     });

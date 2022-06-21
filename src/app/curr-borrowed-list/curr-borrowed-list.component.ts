@@ -14,6 +14,7 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 export class CurrBorrowedListComponent implements OnInit {
   borrowedBooks!: Book[];
   id = parseInt(localStorage['UserId']);
+  todaysDate!:Date;
 
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
 
@@ -23,10 +24,11 @@ export class CurrBorrowedListComponent implements OnInit {
 
   getBorrowedBooksById(id:any)
   {
-    this.api.getBorrowedBooksById(id).subscribe((res: any)=> {
+    this.todaysDate= new Date();
+    this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
    
         console.log(res);
-        this.borrowedBooks = res.map((r : any) => r.Book);
+        this.borrowedBooks = res.filter(r => new Date(r.ExpDate).getDate()+7 > this.todaysDate.getDate()).map((t: Borrow) => t.Book);;
     
     });
   }

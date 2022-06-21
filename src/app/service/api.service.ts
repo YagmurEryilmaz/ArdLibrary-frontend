@@ -10,7 +10,8 @@ import {
     LoginResponseDto,
     Borrow,
     BorrowDto,
-    BorrowAddDto
+    BorrowAddDto,
+    PrevBorrow
 } from "../model/models";
 
 @Injectable({
@@ -36,12 +37,27 @@ import {
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
+
+    getFilteredBooks(){
+        return this.http.get<Array<Book>>(
+          "https://localhost:7109/api/Book/Filter",
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
     getBorrowedBooks(){
         return this.http.get<Array<Borrow>>(
           "https://localhost:7109/api/Borrow",
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
+
+      getPrevBorrowedBooks(){
+        return this.http.get<Array<PrevBorrow>>(
+          "https://localhost:7109/api/PrevBorrow",
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
 
     addBorrowedBooks(data: BorrowAddDto) {
       console.log(data);
@@ -52,6 +68,15 @@ import {
         );
       }
 
+      addPrevBorrowedBooks(data: BorrowAddDto) {
+        console.log(data);
+          return this.http.post<BorrowDto>(
+            "https://localhost:7109/api/PrevBorrow",
+            data,
+            { headers: new HttpHeaders(this.httpOptions) }
+          );
+        }
+
       getBorrowedBooksById(id:number){
         console.log(id);
         return this.http.get<Array<Borrow>>(
@@ -60,6 +85,13 @@ import {
         );
       }
 
+      getPrevBorrowedBooksById(id:number){
+        console.log(id);
+        return this.http.get<Array<Borrow>>(
+          "https://localhost:7109/api/PrevBorrow/GetPrevBorrowedBooksById/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
       getBookById(id:number){
         console.log(id);
         return this.http.get<Book>(
