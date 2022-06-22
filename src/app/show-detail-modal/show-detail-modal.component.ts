@@ -3,8 +3,6 @@ import {MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Book } from '../model/models';
 import{ApiService} from "../service/api.service";
 
-
-
 @Component({
   selector: 'app-show-detail-modal',
   templateUrl: './show-detail-modal.component.html',
@@ -15,15 +13,13 @@ export class ShowDetailModalComponent implements OnInit {
   specificBook!:Book;
   id =parseInt( localStorage['bookId']);
 
-  
-
   constructor(public dialogRef: MatDialogRef<ShowDetailModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private api:ApiService) { }
 
     ngOnInit(): void {
 
       this.getBookById(this.id);
-      console.log("helloooo",this.id);
+
     }
 
   getBorrowedBooks()
@@ -42,8 +38,6 @@ export class ShowDetailModalComponent implements OnInit {
 
     });
      
-  
-    
   }
 
   closeModal(){
@@ -51,6 +45,7 @@ export class ShowDetailModalComponent implements OnInit {
     this.dialogRef.close();
 
   }
+
 }
 
 
