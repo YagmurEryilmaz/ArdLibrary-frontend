@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import {Book} from "../model";
 import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 import {User} from "../model";
@@ -7,30 +7,38 @@ import { AlertifyService } from '../service/alertify-service.service';
 import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {SharedDataService} from '../service/SharedDataService';
+import {FilterComponent} from '../filter/filter.component';
 
 @Component({
   selector: 'book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
-export class BookListComponent implements OnInit {
-  
+export class BookListComponent implements OnInit{
+
+  public currentList!:Book[]
   books!:Book[];
   allBooks!: Book[];
   borrowData:BorrowDto=new BorrowDto();
   filter:any;
   id = parseInt(localStorage['UserId']);
+ 
 
-  constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService) { 
+  constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService ) { 
     sharedComp.currentMessage.subscribe((res:string)=> {
       this.filter = res;
-      this.search(res);
+      this.search(res.toString().toLocaleLowerCase());
     })
   }
+  
+  filteredList(currentList:Book[])
+   {
+     this.currentList=currentList;
+     this.books=currentList;
+   }
 
   ngOnInit(): void {
     this.getBooks();
-  
   }
 
   getBooks() {
@@ -50,11 +58,12 @@ export class BookListComponent implements OnInit {
           BookId : bookId,
           ExpDate: new Date(),
       }
-
+ 
  
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
       console.log(res);
       alert("Book is successfully borrowed!!")
+      window.location.reload();
     }, (err:any)=> {
       alert("You cannot borrow more than 5 books!!");
     });

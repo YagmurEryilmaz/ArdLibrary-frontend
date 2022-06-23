@@ -1,5 +1,5 @@
 
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import {
     Book,
@@ -40,10 +40,10 @@ import {
       }
 
     getFilteredBooks(filterReq: FilterDto){
-      console.log(filterReq);
         return this.http.get<Array<Book>>(
           "https://localhost:7109/api/Book/Filter",
-          { headers: new HttpHeaders(this.httpOptions) }
+          { headers: new HttpHeaders(this.httpOptions), params: { AuthorName: filterReq.AuthorName, Genre:filterReq.Genre, Language:filterReq.Language, PublishYear:filterReq.PublishYear } }, 
+          
         );
       }
     getBorrowedBooks(){
@@ -72,7 +72,7 @@ import {
 
       addPrevBorrowedBooks(data: BorrowAddDto) {
         console.log(data);
-          return this.http.post<BorrowDto>(
+          return this.http.post<BorrowAddDto>(
             "https://localhost:7109/api/PrevBorrow",
             data,
             { headers: new HttpHeaders(this.httpOptions) }

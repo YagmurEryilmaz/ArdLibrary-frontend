@@ -1,31 +1,30 @@
 <div class="container">
 <form>
     <div class="row">
-      <div class="form-group col-md-3">
-        <label for="inputCity">Author Name</label>
-        <input type="text" id="authorName" class="form-control" id="authorName">
+      <div class="form-group col-md-6">
+        <label>Author Name</label>
+        <input class="form-control"  id="searchArea" type="text" id="authorName">
       </div>
-      <div class="form-group col-md-3">
-        <label for="inputCity">Publish Year</label>
-        <input type="text" id="publishYear"  class="form-control" id="publishYear">
+      <div class="form-group col-md-6">
+        <label>Publish Year</label>
+        <input class="form-control"  id="searchArea" type="text" id="publishYear">
       </div>
     </div>
     <div class="row ">
-      <div class="form-group col-md-3">
-        <label for="inputState">Genre</label>
-        <select id="genre" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
+      <div class="form-group col-md-6">
+        <label>Genre</label>
+        
+        <input class="form-control"  id="searchArea" type="text" id="genre">
+      
       </div>
-      <div class="form-group col-md-3">
-        <label for="inputState">Language</label>
-        <select id="language" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
+      <div class="form-group col-md-6">
+        <label>Language</label>      
+          <input class="form-control"  id="searchArea" type="text" id="language">
       </div>
     </div>
-    <button type="submit" class="btn btn-primary my-2" (click)="filter()">Apply</button>
+    <div>
+      <button class="btn btn-primary my-2 " style="float:right"  (click)= "clear()">Clear</button>
+      <button type="submit" class="btn btn-primary my-2 mx-2" style="float:right" (click)="filter()">Apply</button>
+  </div>
   </form>
 </div>

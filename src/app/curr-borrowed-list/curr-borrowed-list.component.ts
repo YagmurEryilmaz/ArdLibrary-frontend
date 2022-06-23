@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {Book} from '../model';
-import { Borrow, User, BorrowDto } from '../model/models';
+import { Borrow, User, BorrowDto, PrevBorrow, BorrowAddDto } from '../model/models';
 import{ApiService} from "../service/api.service";
 import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 
@@ -13,6 +13,7 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 })
 export class CurrBorrowedListComponent implements OnInit {
   borrowedBooks!: Book[];
+  prevBooks!:Borrow[];
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
 
@@ -26,9 +27,10 @@ export class CurrBorrowedListComponent implements OnInit {
   {
     this.todaysDate= new Date();
     this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
-   
         console.log(res);
-        this.borrowedBooks = res.filter(r => new Date(r.ExpDate).getDate()+7 > this.todaysDate.getDate()).map((t: Borrow) => t.Book);;
+        this.borrowedBooks = res.filter(r => new Date(r.ExpDate).getDate()+2 > this.todaysDate.getDate()).map((t: Borrow) => t.Book);
+        //this.prevBooks = res.filter(r => new Date(r.ExpDate).getDate()+2 <this.todaysDate.getDate()).map((t: BorrowAddDto) => this.api.addPrevBorrowedBooks(t));
+
     
     });
   }
