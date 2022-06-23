@@ -8,12 +8,14 @@ import { ApiService } from "../service/api.service";
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
+  genres!:[]
+  specificGenres!:[]
 
-  constructor(private api : ApiService) { 
-  }
-  //genres = [...new Set(this.api.getBooks().subscribe((res:any)=> res.map((book:Book)=> book.Genre)))];
+  constructor(private api : ApiService) {}
+  
   @Output() onFilter = new EventEmitter<Book[]>();
   ngOnInit(): void {
+    this.getGenres();
   }
 
   filter()
@@ -39,5 +41,12 @@ export class FilterComponent implements OnInit {
   clear()
   {
     window.location.reload();
+  }
+  getGenres()
+  {
+    this.api.getBooks().subscribe((res:any)=>{
+      this.genres = res.filter((book:Book)=> book.Genre);
+        return [...new Set (this.genres)]
+    });
   }
 }
