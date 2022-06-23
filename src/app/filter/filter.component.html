@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
 <form>
     <div class="row">
       <div class="form-group col-md-6">
@@ -12,14 +12,20 @@
     </div>
     <div class="row ">
       <div class="form-group col-md-6">
+
         <label>Genre</label>
-        
-        <input class="form-control" type="text" id="genre">
-      
+        <select id="genre" class="form-control">
+          <option selected value="" disabled selected hidden>Choose...</option>
+          <option *ngFor="let genre of genres "> {{genre}}</option>
+        </select>
       </div>
       <div class="form-group col-md-6">
         <label>Language</label>      
-          <input class="form-control" type="text" id="language">
+        <select id="language" class="form-control">
+          <option selected value="" disabled selected hidden>Choose...</option>
+          <option *ngFor="let lang of languages "> {{lang}}</option>
+        </select>
+        
       </div>
     </div>
     <div>
