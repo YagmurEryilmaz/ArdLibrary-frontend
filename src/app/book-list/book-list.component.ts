@@ -20,7 +20,7 @@ export class BookListComponent implements OnInit {
   borrowData:BorrowDto=new BorrowDto();
   filter:any;
   id = parseInt(localStorage['UserId']);
-
+  p!: any;
 
   constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService) { 
     sharedComp.currentMessage.subscribe((res:string)=> {
