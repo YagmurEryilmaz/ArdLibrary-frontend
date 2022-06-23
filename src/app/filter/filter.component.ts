@@ -19,6 +19,8 @@ export class FilterComponent implements OnInit {
     this.getLanguages();
   }
 
+  show = false;
+
   filter()
   {
     let filterRequest = new FilterDto();
