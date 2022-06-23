@@ -25,6 +25,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { ListFilterPipe } from './listFilterPipe';
 import { FilterComponent } from './filter/filter.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { FilterComponent } from './filter/filter.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    ShowDetailModule
+    ShowDetailModule,
+    NgxPaginationModule
   ],
   providers: [{ provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]
