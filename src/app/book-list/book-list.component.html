@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books; let i = index " >
+      <tr *ngFor="let book of books | paginate: {itemsPerPage: 8, currentPage: p}; let i = index " >
         <th scope="row">{{i + 1}}</th>
         <td>{{book.Title}}</td>
         <td>{{book.AuthorName}}</td>
@@ -29,6 +29,7 @@
     </tbody>
   </table>
   <div  style="float: right; margin-right: 55px;" >
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
   
  
