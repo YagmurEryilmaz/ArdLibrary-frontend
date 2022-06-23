@@ -64,12 +64,16 @@ export class PrevBorrowedListComponent implements OnInit {
     
   }
 
-  openDetail(bookId:any): void  {
+  openDetail(bookId:any):void {
 
     localStorage.setItem("bookId",bookId)
+    console.log(bookId);
     
-    let dialogRef = this.showDetailRef.open(ShowDetailModalComponent, {
-    });
+    let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
+      {
+        width: "890px",
+        height:"auto",
+      });
 }
 
 search(value: string): void {

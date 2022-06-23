@@ -29,7 +29,8 @@ export class CurrBorrowedListComponent implements OnInit {
     this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
         console.log(res);
         this.borrowedBooks = res.filter(r => new Date(r.ExpDate).getDate()+2 > this.todaysDate.getDate()).map((t: Borrow) => t.Book);
-        //this.prevBooks = res.filter(r => new Date(r.ExpDate).getDate()+2 <this.todaysDate.getDate()).map((t: BorrowAddDto) => this.api.addPrevBorrowedBooks(t));
+        //this.prevBooks=res.filter(r => new Date(r.ExpDate).getDate()+2 <this.todaysDate.getDate()).map((t: BorrowAddDto) => t);
+        console.log(res.filter(r => new Date(r.ExpDate).getDate()+2 <this.todaysDate.getDate()).map((t: BorrowAddDto) => this.api.addPrevBorrowedBooks(t)))
 
     
     });

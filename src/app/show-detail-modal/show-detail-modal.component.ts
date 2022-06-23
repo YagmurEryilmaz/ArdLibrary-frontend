@@ -11,7 +11,7 @@ import{ApiService} from "../service/api.service";
 export class ShowDetailModalComponent implements OnInit {
   borrowedBooks:Array<Book>=new Array<Book>();
   specificBook!:Book;
-  id =parseInt( localStorage['bookId']);
+  id=parseInt( localStorage['bookId']);
 
   constructor(public dialogRef: MatDialogRef<ShowDetailModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private api:ApiService) { }
