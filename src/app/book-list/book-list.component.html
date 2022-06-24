@@ -23,7 +23,7 @@
         <ng-template #elseBlock><td > <span style="color: rgb(10, 194, 10);"> YES </span>  </td>  </ng-template>
         <div class=" w-100 d-flex flex-xl-row flex-sm-column " >
           <button type="button" (click)="openDetail(book.Id)" class="btn btn-info my-1 mx-2">Show Details</button>
-          <button class="btn btn-success" type="submit" (click)="addBorrow(book.Id)" [disabled]="book.IsBorrowed">Borrow</button>
+          <button class="btn bs-btn-color-success btn-success  mx-2 my-1 " type="submit" (click)="addBorrow(book.Id)" [disabled]="book.IsBorrowed">Borrow</button>
         </div>
       </tr>
     </tbody>
