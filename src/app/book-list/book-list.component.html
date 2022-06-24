@@ -1,5 +1,5 @@
 <filter (onFilter)="filteredList($event)"></filter>
-<table class="table table-hover my-3"  >
+<table class="table table-hover my-3" >
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -19,8 +19,8 @@
         <td>{{book.PublishYear}}</td>
         <td>{{book.Genre}}</td>
         <td>{{book.Language}}</td>
-        <td *ngIf="book.IsBorrowed; else elseBlock"> <span style="color: red;"> NO </span>  </td>
-        <ng-template #elseBlock><td > <span style="color: rgb(10, 194, 10);"> YES </span>  </td>  </ng-template>
+        <td *ngIf="book.IsBorrowed; else elseBlock"> <span style="color:  #b44593;"> NO </span>  </td>
+        <ng-template #elseBlock><td > <span style="color: rgb(25, 185, 25);"> YES </span>  </td>  </ng-template>
         <div class=" w-100 d-flex flex-xl-row flex-sm-column " >
           <button type="button" (click)="openDetail(book.Id)" class="btn btn-info my-1 mx-2">Show Details</button>
           <button class="btn bs-btn-color-success btn-success  mx-2 my-1 " type="submit" (click)="addBorrow(book.Id)" [disabled]="book.IsBorrowed">Borrow</button>

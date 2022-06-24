@@ -1,15 +1,27 @@
 .filterButton {
     font-size: 16px;
     line-height: 16px;
-    height: 3px;
+    height: 1px;
     overflow: hidden;
   }
 #filterButton
 {
-  background-color: #90d4e2;
+  background-color: #b44593;
+  color: white;
 }
+#filterButton:hover
+{
+  background-color: #88316e;
+  color: white;
+}
+
 #closeButton{
-  background-color: #fbe86d;
+  background-color: #90d4e2;
+  color: white;
+}
+#closeButton:hover{
+  background-color: #6aabb8;
+  color: white;
 }
   
   .show {
