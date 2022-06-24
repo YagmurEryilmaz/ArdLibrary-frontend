@@ -3,10 +3,10 @@
     background: #fccb90;
     
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #1F51FF, #4e1d8b, #62049c, #b44593);
+    background: -webkit-linear-gradient(to right,#486ded, #6500df, #8d2aca, #c762a9);
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #1F51FF, #6505da, #62049c, #b44593);
+    background: linear-gradient(to right, #486ded, #6500df, #8d2aca, #c762a9);
     }
     
     @media (min-width: 768px) {
@@ -27,7 +27,7 @@
 
     .btn-primary {
         --bs-btn-color: #fff;
-        --bs-btn-bg: #024e79;
+        --bs-btn-bg: #486ded;
         --bs-btn-border-color: #0d6efd;
         --bs-btn-hover-color: #fff;
         --bs-btn-hover-bg: #0b5ed7;
