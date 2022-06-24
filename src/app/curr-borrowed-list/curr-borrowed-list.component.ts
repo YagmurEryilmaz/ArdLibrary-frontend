@@ -20,18 +20,16 @@ export class CurrBorrowedListComponent implements OnInit {
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
 
   ngOnInit(): void {
-    this.getBorrowedBooksById(this.id);
+    this.getCurrBorrowedBooksById(this.id);
   }
 
-  getBorrowedBooksById(id:any)
+  getCurrBorrowedBooksById(id:any)
   {
     this.todaysDate= new Date();
-    this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
+    this.api.getCurrBorrowedBooksById(id).subscribe((res: Borrow[])=> {
         console.log(res);
-        this.borrowedBooks = res.filter(r => new Date(r.ExpDate).getDate()+2 > this.todaysDate.getDate()).map((t: Borrow) => t.Book);
-        //this.prevBooks=res.filter(r => new Date(r.ExpDate).getDate()+2 <this.todaysDate.getDate()).map((t: BorrowAddDto) => t);
-        console.log(res.filter(r => new Date(r.ExpDate).getDate()+2 <this.todaysDate.getDate()).map((t: BorrowAddDto) => this.api.addPrevBorrowedBooks(t)))
-
+        this.borrowedBooks = res.map((t: Borrow) => t.Book);
+       
     
     });
   }

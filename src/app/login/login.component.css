@@ -11,7 +11,12 @@
     
     @media (min-width: 768px) {
     .gradient-form {
-    height: 100vh !important;
+        height: 100%;  
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position:relative;
     }
     }
     @media (min-width: 769px) {

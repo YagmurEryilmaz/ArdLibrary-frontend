@@ -53,13 +53,6 @@ import {
         );
       }
 
-      getPrevBorrowedBooks(){
-        return this.http.get<Array<PrevBorrow>>(
-          "https://localhost:7109/api/PrevBorrow",
-          { headers: new HttpHeaders(this.httpOptions) }
-        );
-      }
-
 
     addBorrowedBooks(data: BorrowAddDto) {
       console.log(data);
@@ -69,15 +62,6 @@ import {
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
-
-      addPrevBorrowedBooks(data: BorrowAddDto) {
-        console.log(data);
-          return this.http.post<BorrowAddDto>(
-            "https://localhost:7109/api/PrevBorrow",
-            data,
-            { headers: new HttpHeaders(this.httpOptions) }
-          );
-        }
 
       getBorrowedBooksById(id:number){
         console.log(id);
@@ -90,7 +74,15 @@ import {
       getPrevBorrowedBooksById(id:number){
         console.log(id);
         return this.http.get<Array<Borrow>>(
-          "https://localhost:7109/api/PrevBorrow/GetPrevBorrowedBooksById/" +id,
+          "https://localhost:7109/api/Borrow/GetPrevBorrowedBooksById/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      getCurrBorrowedBooksById(id:number){
+        console.log(id);
+        return this.http.get<Array<Borrow>>(
+          "https://localhost:7109/api/Borrow/GetCurrentlyBorrowedBooksById/" +id,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }

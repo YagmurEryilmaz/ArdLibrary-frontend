@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of books | paginate: {itemsPerPage: 8, currentPage: p}; let i = index " >
+      <tr *ngFor="let book of books | paginate: {itemsPerPage: 10, currentPage: p}; let i = index " >
         <th scope="row">{{i + 1}}</th>
         <td>{{book.Title}}</td>
         <td>{{book.AuthorName}}</td>

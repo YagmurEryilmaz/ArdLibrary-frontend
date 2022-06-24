@@ -28,15 +28,17 @@ export class PrevBorrowedListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getPrevBorrowedBooksById(this.id)
+    this.getBorrowedBooksById(this.id)
   }
-  getPrevBorrowedBooksById(id:any)
+  getBorrowedBooksById(id:any)
   {
     this.todaysDate= new Date();
    
     this.api.getPrevBorrowedBooksById(id).subscribe((res: Borrow[])=> {
         //deneme: res.forEach(r => console.log(new Date(r.ExpDate).getDate(), "hello", new Date(r.ExpDate).getDate()+2));
-        this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
+        //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
+        //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
+        this.books =res;
         //this.expDate = res.map(r=> new Date(r.ExpDate).getDate());
         this.allBooks =res;
         
@@ -63,19 +65,7 @@ export class PrevBorrowedListComponent implements OnInit {
     });
     
   }
-
-  openDetail(bookId:any):void {
-
-    localStorage.setItem("bookId",bookId)
-    console.log(bookId);
-    
-    let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
-      {
-        width: "890px",
-        height:"auto",
-      });
-}
-
+  
 search(value: string): void {
   this.books = this.allBooks?.filter((val) => val.Book.Title.toLowerCase().includes(value) || val.Book.AuthorName.toLowerCase().includes(value));
 }
