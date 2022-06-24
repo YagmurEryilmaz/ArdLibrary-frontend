@@ -1,9 +1,16 @@
 .filterButton {
     font-size: 16px;
     line-height: 16px;
-    height: 1px;
+    height: 3px;
     overflow: hidden;
   }
+#filterButton
+{
+  background-color: #90d4e2;
+}
+#closeButton{
+  background-color: #fbe86d;
+}
   
   .show {
     overflow: visible;

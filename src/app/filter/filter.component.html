@@ -31,10 +31,10 @@
           </div>
         </div>
         <div>
-          <button class="btn btn-primary my-2 " style="float:right" (click)= "clear()">Clear</button>
-          <button type="submit" class="btn btn-primary my-2 mx-2" style="float:right" (click)="filter()">Apply</button>
+          <button id="filterButton" class="btn my-2 " style="float:right" (click)= "clear()">Clear</button>
+          <button id="filterButton" type="submit" class="btn my-2 mx-2" style="float:right" (click)="filter()">Apply</button>
       </div>
       </form>
     </div>
 </div>
-<button class="btn btn-warning my-2 "  style="float:right" (click)="show = !show">{{ show ? 'Close': 'Filter' }}</button>
+<button id="closeButton" class="btn my-2 "  style="float:right" (click)="show = !show">{{ show ? 'Close': 'Filter' }}</button>
