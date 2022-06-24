@@ -31,3 +31,15 @@
     --bs-btn-disabled-bg: #90d4e2;
     --bs-btn-disabled-border-color: #90d4e2;
 }
+
+#returnButton
+{
+  background-color: #b44593;
+  border: none;
+  color: white;
+}
+#returnButton:hover
+{
+  background-color: #88316e;
+  border: none;
+}
