@@ -27,6 +27,8 @@ import { ListFilterPipe } from './listFilterPipe';
 import { FilterComponent } from './filter/filter.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {PageEvent} from '@angular/material/paginator';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AddNewBookModalComponent } from './add-new-book-modal/add-new-book-modal.component';
 
 @NgModule({
   
@@ -43,6 +45,8 @@ import {PageEvent} from '@angular/material/paginator';
     RegisterComponent,
     ListFilterPipe,
     FilterComponent,
+    AdminPageComponent,
+    AddNewBookModalComponent,
   ],
   imports: [
     BrowserModule,
