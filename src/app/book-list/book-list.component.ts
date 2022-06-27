@@ -78,7 +78,7 @@ export class BookListComponent implements OnInit{
     let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
     {
       width: "863px",
-      height:"642px",
+      height:"auto",
     });
 
   }

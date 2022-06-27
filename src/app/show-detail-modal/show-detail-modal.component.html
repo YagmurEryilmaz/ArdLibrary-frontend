@@ -1,9 +1,9 @@
-<div  class=" container row">
+<div  class=" container row d-flex flex-xl-row flex-sm-column">
   <div> <button class="btn btn-close" style="float:right" (click)="closeModal()"></button></div>
   <div *ngIf="specificBook && specificBook.ImageUrl" class="col-6 my-3">
-    <img src="{{specificBook.ImageUrl}}" alt="" style="width: 100% ; height: auto; object-fit: contain;">
+    <img src="{{specificBook.ImageUrl}}" alt="" style="width: auto ; height: 535px;">
   </div>
-  <div class="col-6" style="margin-top: 20px;">
+  <div class="col-6 d-flex flex-xl-row flex-sm-column" style="margin-top: 20px;">
     <table *ngIf="specificBook">
       <tr>
         <th>Title:</th>
@@ -27,9 +27,12 @@
           <td>{{specificBook.Language}}</td>
       </tr>
         <th>Subject: </th>
-        <div class="my-4">
+        <div [ngClass]="{'limitTextHeight': isReadMore}">
           <td>{{specificBook.Subject}}</td>
         </div>
+        <button class="btn btn-link" type="button" (click)="showText()">
+          {{ isReadMore ? '...Read More': 'Read Less' }}
+        </button>
     </table>
    
   </div>

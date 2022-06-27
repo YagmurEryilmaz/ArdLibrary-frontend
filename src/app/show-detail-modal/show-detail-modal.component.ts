@@ -11,6 +11,7 @@ import{ApiService} from "../service/api.service";
 export class ShowDetailModalComponent implements OnInit {
   borrowedBooks:Array<Book>=new Array<Book>();
   specificBook!:Book;
+  isReadMore = true
   id=parseInt( localStorage['bookId']);
 
   constructor(public dialogRef: MatDialogRef<ShowDetailModalComponent>,
@@ -21,6 +22,10 @@ export class ShowDetailModalComponent implements OnInit {
       this.getBookById(this.id);
 
     }
+
+  showText() {
+    this.isReadMore = !this.isReadMore
+   }
 
   getBorrowedBooks()
   {
