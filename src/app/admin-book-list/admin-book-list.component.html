@@ -1,0 +1,32 @@
+<filter (onFilter)="filteredList($event)"></filter>
+<table class="table table-hover my-3" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Publish Year</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Language</th>
+        <th scope="col">Available</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books | paginate: {itemsPerPage: 10, currentPage: p}; let i = index " >
+        <th scope="row">{{i + 1}}</th>
+        <td>{{book.Title}}</td>
+        <td>{{book.AuthorName}}</td>
+        <td>{{book.PublishYear}}</td>
+        <td>{{book.Genre}}</td>
+        <td>{{book.Language}}</td>
+        <td *ngIf="book.IsBorrowed; else elseBlock"> <span style="color:  #b44593;"> NO </span>  </td>
+        <ng-template #elseBlock><td > <span style="color: rgb(3, 143, 3);"> YES </span>  </td>  </ng-template>
+        <button type="button" class="btn btn-danger my-1 mx-2">Delete</button>
+      </tr>
+    </tbody>
+  </table>
+  <div  style="float: right; margin-right: 55px;" >
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+ 

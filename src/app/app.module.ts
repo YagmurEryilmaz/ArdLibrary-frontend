@@ -29,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {PageEvent} from '@angular/material/paginator';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AddNewBookModalComponent } from './add-new-book-modal/add-new-book-modal.component';
+import { AdminBookListComponent } from './admin-book-list/admin-book-list.component';
 
 @NgModule({
   
@@ -47,6 +48,7 @@ import { AddNewBookModalComponent } from './add-new-book-modal/add-new-book-moda
     FilterComponent,
     AdminPageComponent,
     AddNewBookModalComponent,
+    AdminBookListComponent,
   ],
   imports: [
     BrowserModule,
