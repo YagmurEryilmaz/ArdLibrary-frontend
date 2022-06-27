@@ -21,7 +21,7 @@
         <td>{{book.Language}}</td>
         <td *ngIf="book.IsBorrowed; else elseBlock"> <span style="color:  #b44593;"> NO </span>  </td>
         <ng-template #elseBlock><td > <span style="color: rgb(3, 143, 3);"> YES </span>  </td>  </ng-template>
-        <button type="button" class="btn btn-danger my-1 mx-2">Delete</button>
+        <button type="button" class="btn btn-danger my-1 mx-2" (click)="deleteBook(book.Id)">Delete</button>
       </tr>
     </tbody>
   </table>

@@ -9,9 +9,12 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 const routes: Routes = [
   {path:"home", component:HomeComponent, canActivate:[AuthGuard]} , // can activate/ load
   {path:"my-books", component:MyBooksComponent,canActivate:[AuthGuard]},
-  {path:"admin-page", component:AdminPageComponent,canActivate:[AuthGuard]},
   {path:"login", component:LoginComponent},
-  {path:"", redirectTo:"login",pathMatch:"full"}
+  {path:"admin-page", component:AdminPageComponent,canActivate:[AuthGuard]},
+  {path:"", redirectTo:"login",pathMatch:"full"},
+  
+  
+
 
 ];
 

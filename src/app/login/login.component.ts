@@ -36,13 +36,18 @@ export class LoginComponent implements OnInit {
         this.token =res.AccessToken;
         this.tokeInfo=this.getDecodedAccessToken(this.token);
         localStorage.setItem("token",res.AccessToken);
-        localStorage.setItem("Email", this.tokeInfo.Email);
+        localStorage.setItem("Email", this.tokeInfo.email);
         localStorage.setItem("UserId",this.tokeInfo.nameid);
-        console.log(this.tokeInfo.nameid);
-        this.authService.isLoggedIn=true; 
+        localStorage.setItem("Role",this.tokeInfo.role);
         localStorage.setItem("isLoggedIn", "1");
-        this.router.navigate(["home"]);
-
+        if(this.tokeInfo.role == "admin")
+        {
+          localStorage.setItem("isAdmin", "1");
+          this.router.navigate(["admin-page"]);
+        }
+        else{
+          this.router.navigate(["home"]);
+        }
       }
       else alert("User not found")
     }, (err:any)=> {

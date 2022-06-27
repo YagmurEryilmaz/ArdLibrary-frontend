@@ -36,6 +36,7 @@ export class CurrBorrowedListComponent implements OnInit {
 
   deleteBorrowedBook(id:any)
   {
+    if(confirm("Are you sure to return the book?")){
     this.api.deleteBorrowedBook(id).subscribe((res:any)=>
     {
       alert("Borrowed book is successfully returned!!")
@@ -43,6 +44,7 @@ export class CurrBorrowedListComponent implements OnInit {
     },(err:any)=> {
       alert("Something went wrong!!")
     });
+  }
   }
  
   openDetail(bookId:any):void

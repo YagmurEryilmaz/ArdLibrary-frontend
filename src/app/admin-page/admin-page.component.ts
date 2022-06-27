@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AddNewBookModalComponent } from '../add-new-book-modal/add-new-book-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AdminBookListComponent } from '../admin-book-list/admin-book-list.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-admin-page',
@@ -10,7 +12,7 @@ import { AdminBookListComponent } from '../admin-book-list/admin-book-list.compo
 })
 export class AdminPageComponent implements OnInit {
 
-  constructor(private addBookRef: MatDialog, private bookListRef: MatDialog) { }
+  constructor(private addBookRef: MatDialog, private bookListRef: MatDialog, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -34,4 +36,11 @@ export class AdminPageComponent implements OnInit {
         height:"700px",
       });
   }
+
+  logout()
+  {
+    this.router.navigate(["login"]);
+    localStorage.clear();
+  }
+
 }

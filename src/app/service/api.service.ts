@@ -48,7 +48,7 @@ import {
       }
     getBorrowedBooks(){
         return this.http.get<Array<Borrow>>(
-          "https://localhost:7109/api/Borrow",
+          "https://localhost:7109/api/Borrow/getBorrowedBooks",
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
@@ -97,6 +97,13 @@ import {
       deleteBorrowedBook(id: number) {
         return this.http.delete<any>(
           `https://localhost:7109/api/Borrow/${id}`,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      deleteBook(id: number) {
+        return this.http.delete<any>(
+          `https://localhost:7109/api/Book/${id}`,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }

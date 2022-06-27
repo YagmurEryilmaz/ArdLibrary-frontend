@@ -50,6 +50,19 @@ export class AdminBookListComponent implements OnInit {
   
   }
 
+  deleteBook(id:number)
+  {
+    if(confirm("Are you sure to delete? ")) {
+      this.api.deleteBook(id).subscribe((res:any)=>{
+        alert("Book is successfully deleted")
+        window.location.reload();
+      }, (err:any)=> {
+        alert("Something went wrong on deletion!!")
+      })
+    }
+    
+  }
+
   search(value: string): void {
     this.books = this.allBooks?.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value) || val.PublishYear.toString().includes(value));
   }

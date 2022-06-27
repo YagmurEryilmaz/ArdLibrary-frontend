@@ -62,9 +62,10 @@ export class BookListComponent implements OnInit{
  
  
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
-     
+     if(confirm("Are you sure to borrow this book? \nThe book should be returned in 7 days and you cannot borrow more than 5 books at the same time." ))
+     {
       alert("Book is successfully borrowed!!")
-      //window.location.reload();
+     }
       console.log("hello",res);
     }, (err:any)=> {
       alert("You cannot borrow more than 5 books!!");
