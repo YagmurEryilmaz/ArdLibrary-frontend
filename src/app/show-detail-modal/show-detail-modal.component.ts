@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild,AfterViewInit } from '@angular/core';
 import {MatDialogRef,MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Book } from '../model/models';
 import{ApiService} from "../service/api.service";
@@ -11,8 +11,10 @@ import{ApiService} from "../service/api.service";
 export class ShowDetailModalComponent implements OnInit {
   borrowedBooks:Array<Book>=new Array<Book>();
   specificBook!:Book;
-  isReadMore = true
+  isReadMore = false;
+  lengthControl = true;
   id=parseInt( localStorage['bookId']);
+  height!:string; 
 
   constructor(public dialogRef: MatDialogRef<ShowDetailModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private api:ApiService) { }
@@ -20,12 +22,9 @@ export class ShowDetailModalComponent implements OnInit {
     ngOnInit(): void {
 
       this.getBookById(this.id);
+     
 
     }
-
-  showText() {
-    this.isReadMore = !this.isReadMore
-   }
 
   getBorrowedBooks()
   {
@@ -34,16 +33,28 @@ export class ShowDetailModalComponent implements OnInit {
         this.borrowedBooks = res.map((r:any) => r.Book);
 
     });
+    
   }
   getBookById(id:any){
 
     this.api.getBookById(id).subscribe((res:any)=> {
       this.specificBook=res;
       console.log(res);
+      console.log(this.specificBook.Subject.length);
 
+      this.showText()
     });
-     
   }
+
+  showText() {
+    if(this.specificBook.Subject.length > 807){
+      this.isReadMore = !this.isReadMore
+      this.lengthControl = true;
+    }
+    else{
+      this.lengthControl = false;
+    }
+   }
 
   closeModal(){
 
@@ -51,6 +62,5 @@ export class ShowDetailModalComponent implements OnInit {
 
   }
 
+  
 }
-
-
