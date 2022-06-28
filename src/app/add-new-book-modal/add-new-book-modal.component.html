@@ -28,11 +28,10 @@
         <textarea id="subject" class="form-control" rows="4"></textarea>
       </div>
     
-    <div class="form-check">
-      <input class="form-check-input" input type="che" name="flexRadioDefault" id="confirmation">
-      <label class="form-check-label"  for="confirmation">
-        I confirm that the book information is entered correctly
-      </label>
+    <div class="form-check my-2">
+      <input class="form-check-input" id="checkbox" type="checkbox" name="sendemail" [(ngModel)]="isChecked">
+      <label class="form-check-label" for="checkbox">Confirm</label>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="addBooks()" >Add Book</button>
+    <button *ngIf="isChecked else other_content" type="submit" class="btn btn-primary" (click)="addBooks()">Add Book</button>
+    <ng-template #other_content> <button type="submit" class="btn btn-primary" (click)="addBooks()" disabled >Add Book</button> </ng-template>
   </form>

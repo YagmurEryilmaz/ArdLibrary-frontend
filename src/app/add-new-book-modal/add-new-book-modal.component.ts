@@ -11,10 +11,12 @@ import { ApiService } from '../service/api.service';
 export class AddNewBookModalComponent implements OnInit {
 
   constructor(private api:ApiService) { }
-
-  
+ 
+ 
   ngOnInit(): void {
   }
+
+  public isChecked = false;
 
   addBooks(){
     var bookRequest = new BookDto();
@@ -44,8 +46,10 @@ export class AddNewBookModalComponent implements OnInit {
 
   }
 
-  checkCheckBoxvalue(event:any){
-    console.log(event.checked)
+  checkCheckBoxvalue(){
+    
+    console.log(this.isChecked)
+
   }
 
 }
