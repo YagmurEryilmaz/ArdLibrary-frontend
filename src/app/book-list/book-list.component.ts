@@ -53,9 +53,6 @@ export class BookListComponent implements OnInit{
   }
   addBorrow(bookId:number)
   {
-    this.parsedExpDate = new Date().toLocaleDateString();
-    console.log(this.parsedExpDate);
-    localStorage.setItem("ParsedExp", this.parsedExpDate);
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
       {
@@ -69,6 +66,7 @@ export class BookListComponent implements OnInit{
      if(confirm("Are you sure to borrow this book? \nThe book should be returned in 7 days and you cannot borrow more than 5 books at the same time." ))
      {
       alert("Book is successfully borrowed!!")
+      window.location.reload();
      }
       console.log("hello",res);
     }, (err:any)=> {

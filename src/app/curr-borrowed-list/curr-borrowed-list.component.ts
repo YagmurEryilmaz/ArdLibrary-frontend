@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -16,11 +17,14 @@ export class CurrBorrowedListComponent implements OnInit {
   prevBooks!:Borrow[];
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
+  dateelement!:string[];
+  parsedExp!:Date[];
 
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
 
   ngOnInit(): void {
     this.getCurrBorrowedBooksById(this.id);
+    this.getExpDate(this.id);
   }
 
   getCurrBorrowedBooksById(id:any)
@@ -34,6 +38,17 @@ export class CurrBorrowedListComponent implements OnInit {
     });
   }
 
+  getExpDate(id:number){
+    var dateelement: string[] = []
+      this.api.getRealExpDate(id).subscribe((res:Date[])=>{
+          this.parsedExp=res;
+          this.parsedExp.forEach(element => {
+            dateelement.push(formatDate(element, 'yyy-MM-dd','en-US'))
+            this.dateelement=dateelement;
+          });
+      })
+   
+    }
   deleteBorrowedBook(id:any)
   {
     if(confirm("Are you sure to return the book?")){

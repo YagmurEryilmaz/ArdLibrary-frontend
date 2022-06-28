@@ -42,14 +42,7 @@ export class PrevBorrowedListComponent implements OnInit {
     
     
     this.api.getPrevBorrowedBooksById(id).subscribe((res: Borrow[])=> {
-      /*res.forEach(element => {
-        element.ExpDate.toLocaleDateString();
-      });*/
-        //deneme: res.forEach(r => console.log(new Date(r.ExpDate).getDate(), "hello", new Date(r.ExpDate).getDate()+2));
-        //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
-        //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
         this.books =res;
-        //this.expDate = res.map(r=> new Date(r.ExpDate).getDate());
         this.allBooks =res;
         
     });
@@ -59,9 +52,6 @@ export class PrevBorrowedListComponent implements OnInit {
     var dateelement: string[] = []
       this.api.getBorrowDate(id).subscribe((res:Date[])=>{
         console.log("yagmurrrr",res);
-              //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
-          //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
-          //this.parsedExp=res.map((r:Date)=> r.toUTCString());
           this.parsedExp=res;
           this.parsedExp.forEach(element => {
             dateelement.push(formatDate(element, 'yyy-MM-dd','en-US'))

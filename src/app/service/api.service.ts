@@ -96,6 +96,14 @@ import {
         );
       }
 
+      getRealExpDate(id:number){
+        console.log(id);
+        return this.http.get<Array<Date>>(
+          "https://localhost:7109/api/Borrow/GetRealExpDate/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
       getCurrBorrowedBooksById(id:number){
         console.log(id);
         return this.http.get<Array<Borrow>>(
