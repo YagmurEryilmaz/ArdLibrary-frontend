@@ -5,6 +5,7 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 import { ApiService } from '../service/api.service';
 import { Borrow, BorrowAddDto, BorrowDto } from '../model/models';
 import { SharedDataService } from '../service/SharedDataService';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-prev-borrowed-list',
@@ -16,6 +17,7 @@ export class PrevBorrowedListComponent implements OnInit {
   allBooks!: Borrow[];
   expDate!:number[]
   parsedExp!:Date[];
+  dateelement!:string[];
   
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
@@ -54,15 +56,21 @@ export class PrevBorrowedListComponent implements OnInit {
   }
 
   getBorrowDate(id:number){
-    this.api.getBorrowDate(id).subscribe((res:Date[])=>{
-      console.log("yagmurrrr",res);
-            //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
-        //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
-        //this.parsedExp=res.map((r:Date)=> r.toUTCString());
-        this.parsedExp =res;
-     console.log("yagmurrrr",res);
-    })
-  }
+    var dateelement: string[] = []
+      this.api.getBorrowDate(id).subscribe((res:Date[])=>{
+        console.log("yagmurrrr",res);
+              //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
+          //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
+          //this.parsedExp=res.map((r:Date)=> r.toUTCString());
+          this.parsedExp=res;
+          this.parsedExp.forEach(element => {
+            dateelement.push(formatDate(element, 'yyy-MM-dd','en-US'))
+            console.log("date",dateelement);
+            this.dateelement=dateelement;
+          });
+      })
+   
+    }
 
    addBorrow(bookId:number)
   {
