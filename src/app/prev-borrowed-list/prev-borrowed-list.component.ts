@@ -15,6 +15,8 @@ export class PrevBorrowedListComponent implements OnInit {
   books!: Borrow[] | undefined
   allBooks!: Borrow[];
   expDate!:number[]
+  parsedExp!:Date[];
+  
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
   filter:any;
@@ -29,12 +31,18 @@ export class PrevBorrowedListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBorrowedBooksById(this.id)
+    this.getBorrowDate(this.id);
+
   }
   getBorrowedBooksById(id:any)
   {
     this.todaysDate= new Date();
-   
+    
+    
     this.api.getPrevBorrowedBooksById(id).subscribe((res: Borrow[])=> {
+      /*res.forEach(element => {
+        element.ExpDate.toLocaleDateString();
+      });*/
         //deneme: res.forEach(r => console.log(new Date(r.ExpDate).getDate(), "hello", new Date(r.ExpDate).getDate()+2));
         //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
         //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
@@ -43,6 +51,17 @@ export class PrevBorrowedListComponent implements OnInit {
         this.allBooks =res;
         
     });
+  }
+
+  getBorrowDate(id:number){
+    this.api.getBorrowDate(id).subscribe((res:Date[])=>{
+      console.log("yagmurrrr",res);
+            //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
+        //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
+        //this.parsedExp=res.map((r:Date)=> r.toUTCString());
+        this.parsedExp =res;
+     console.log("yagmurrrr",res);
+    })
   }
 
    addBorrow(bookId:number)
@@ -57,7 +76,9 @@ export class PrevBorrowedListComponent implements OnInit {
 
  
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
+      
       console.log(res);
+
       alert("Book is successfully Borrowed!!")
       window.location.reload();
     }, (err:any)=> {

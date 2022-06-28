@@ -63,6 +63,15 @@ import {
         );
       }
 
+      addBooks(data: BookDto) {
+        console.log(data);
+          return this.http.post<BookDto>(
+            "https://localhost:7109/api/Book/addBook",
+            data,
+            { headers: new HttpHeaders(this.httpOptions) }
+          );
+        }
+
       getBorrowedBooksById(id:number){
         console.log(id);
         return this.http.get<Array<Borrow>>(
@@ -75,6 +84,14 @@ import {
         console.log(id);
         return this.http.get<Array<Borrow>>(
           "https://localhost:7109/api/Borrow/GetPrevBorrowedBooksById/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      getBorrowDate(id:number){
+        console.log(id);
+        return this.http.get<Array<Date>>(
+          "https://localhost:7109/api/Borrow/GetBorrowDate/" +id,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }

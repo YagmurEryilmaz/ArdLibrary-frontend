@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BookDto } from '../model/models';
+import { ApiService } from '../service/api.service';
+
 
 @Component({
   selector: 'app-add-new-book-modal',
@@ -7,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewBookModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api:ApiService) { }
 
+  
   ngOnInit(): void {
+  }
+
+  addBooks(){
+    var bookRequest = new BookDto();
+    bookRequest.Title= (<HTMLInputElement>document.getElementById("title")).value;
+    bookRequest.AuthorName= (<HTMLInputElement>document.getElementById("author")).value;
+    bookRequest.Genre=(<HTMLInputElement>document.getElementById("genre")).value;
+    bookRequest.Language=(<HTMLInputElement>document.getElementById("lang")).value;
+    bookRequest.PublishYear=parseInt((<HTMLInputElement>document.getElementById("year")).value);
+    bookRequest.ImageUrl=(<HTMLInputElement>document.getElementById("url")).value;
+    bookRequest.Subject=(<HTMLInputElement>document.getElementById("subject")).value;
+
+    var confirmation = (<HTMLInputElement>document.getElementById("confirmation")).value;
+    console.log("helloooo", confirmation);
+
+    this.api.addBooks(bookRequest).subscribe((res:any)=> {
+      if(res&& confirmation == "on")
+      {
+        alert("Book is successfully added!!")
+        window.location.reload();
+      }
+      else{
+        alert("Please check the validity of book info!")
+      }
+    }, (err:any)=> {
+      alert("This Book is already in the system!!")
+    })
+
+  }
+
+  checkCheckBoxvalue(event:any){
+    console.log(event.checked)
   }
 
 }

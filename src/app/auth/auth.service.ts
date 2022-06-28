@@ -10,4 +10,8 @@ isAuthenticated(){
 let d= localStorage.getItem("isLoggedIn");
     return d=="1";
   }
+isAdminLogin(){
+    let d= localStorage.getItem("isAdmin");
+        return d=="1";
+      }
 }

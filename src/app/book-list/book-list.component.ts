@@ -23,6 +23,7 @@ export class BookListComponent implements OnInit{
   filter:any;
   id = parseInt(localStorage['UserId']);
   p!: any;
+  parsedExpDate!:string;
  
 
   constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService ) { 
@@ -52,6 +53,9 @@ export class BookListComponent implements OnInit{
   }
   addBorrow(bookId:number)
   {
+    this.parsedExpDate = new Date().toLocaleDateString();
+    console.log(this.parsedExpDate);
+    localStorage.setItem("ParsedExp", this.parsedExpDate);
     console.log(bookId);
       let addBorrowDto:BorrowAddDto=
       {

@@ -7,10 +7,16 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
-  {path:"home", component:HomeComponent, canActivate:[AuthGuard]} , // can activate/ load
+  {path:"home", component:HomeComponent, canActivate:[AuthGuard],
+  data: {
+    role: 'ROLE_USER'
+  }} ,
   {path:"my-books", component:MyBooksComponent,canActivate:[AuthGuard]},
   {path:"login", component:LoginComponent},
-  {path:"admin-page", component:AdminPageComponent,canActivate:[AuthGuard]},
+  {path:"admin-page", component:AdminPageComponent,canActivate:[AuthGuard],
+  data: {
+    role: 'ROLE_ADMIN'
+  }},
   {path:"", redirectTo:"login",pathMatch:"full"},
   
   
