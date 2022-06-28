@@ -43,7 +43,7 @@ export class CurrBorrowedListComponent implements OnInit {
       this.api.getRealExpDate(id).subscribe((res:Date[])=>{
           this.parsedExp=res;
           this.parsedExp.forEach(element => {
-            dateelement.push(formatDate(element, 'yyy-MM-dd','en-US'))
+            dateelement.push(formatDate(element, 'dd/MM/yyy','en-US'))
             this.dateelement=dateelement;
           });
       })

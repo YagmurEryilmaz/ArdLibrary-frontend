@@ -54,7 +54,7 @@ export class PrevBorrowedListComponent implements OnInit {
         console.log("yagmurrrr",res);
           this.parsedExp=res;
           this.parsedExp.forEach(element => {
-            dateelement.push(formatDate(element, 'yyy-MM-dd','en-US'))
+            dateelement.push(formatDate(element, 'dd/MM/yyy','en-US'))
             console.log("date",dateelement);
             this.dateelement=dateelement;
           });
