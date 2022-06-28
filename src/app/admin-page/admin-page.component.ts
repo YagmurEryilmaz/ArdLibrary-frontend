@@ -32,8 +32,8 @@ export class AdminPageComponent implements OnInit {
   {
     let dialogRef= this.bookListRef.open(AdminBookListComponent,
       {
-        width: "auto",
-        height:"700px",
+        width: "1200px",
+        height:"850px",
       });
   }
 

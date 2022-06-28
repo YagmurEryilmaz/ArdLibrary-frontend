@@ -18,7 +18,6 @@ export class PrevBorrowedListComponent implements OnInit {
   expDate!:number[]
   parsedExp!:Date[];
   dateelement!:string[];
-  
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
   filter:any;
@@ -59,10 +58,6 @@ export class PrevBorrowedListComponent implements OnInit {
   getBorrowDate(id:number){
     var dateelement: string[] = []
       this.api.getBorrowDate(id).subscribe((res:Date[])=>{
-        console.log("yagmurrrr",res);
-              //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
-          //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
-          //this.parsedExp=res.map((r:Date)=> r.toUTCString());
           this.parsedExp=res;
           this.parsedExp.forEach(element => {
             dateelement.push(formatDate(element, 'dd/MM/yyy','en-US'))
@@ -84,10 +79,8 @@ export class PrevBorrowedListComponent implements OnInit {
       }
 
  
-    this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
-      
+    this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {    
       console.log(res);
-
       alert("Book is successfully Borrowed!!")
       window.location.reload();
     }, (err:any)=> {

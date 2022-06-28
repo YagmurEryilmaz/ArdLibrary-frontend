@@ -48,7 +48,8 @@ export class CurrBorrowedListComponent implements OnInit {
           });
       })
    
-    }
+  }
+
   deleteBorrowedBook(id:any)
   {
     if(confirm("Are you sure to return the book?")){
@@ -73,6 +74,4 @@ export class CurrBorrowedListComponent implements OnInit {
     });
 
   }
-
-
 }
