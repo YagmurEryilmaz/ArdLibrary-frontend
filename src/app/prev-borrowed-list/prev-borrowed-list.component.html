@@ -16,9 +16,9 @@
         <th scope="row">{{i+1}}</th>
         <td>{{book.Book.Title}}</td>
         <td>{{book.Book.AuthorName}}</td>
-        <td>{{dateelement}}</td>
+        <td>{{dateelement[i]}}</td>
         <div class=" w-100 d-flex">
-          <button id="borrowButton" class="btn  bs-btn-color-success btn-success mx-2 my-1  " type="submit"  (click)="addBorrow(book.BookId)">Borrow</button>
+          <button id="borrowButton" class="btn  bs-btn-color-success btn-success mx-2 my-1  " type="submit"  (click)="addBorrow(book.Id)">Borrow</button>
         </div>
       </tr>
     </tbody>
