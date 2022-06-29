@@ -24,8 +24,8 @@ export class BookListComponent implements OnInit{
   id = parseInt(localStorage['UserId']);
   p!: any;
   parsedExpDate!:string;
- 
 
+ 
   constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService ) { 
     sharedComp.currentMessage.subscribe((res:string)=> {
       this.filter = res;
@@ -38,7 +38,7 @@ export class BookListComponent implements OnInit{
      this.currentList=currentList;
      this.books=currentList;
    }
-
+   
   ngOnInit(): void {
     this.getBooks();
   }
@@ -49,7 +49,7 @@ export class BookListComponent implements OnInit{
       this.books = res;
       this.allBooks =res;
     });
-  
+
   }
   addBorrow(bookId:number)
   {
@@ -86,6 +86,7 @@ export class BookListComponent implements OnInit{
 
   }
   search(value: string): void {
+    this.p = 1;
     this.books = this.allBooks?.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value) || val.PublishYear.toString().includes(value));
   }
 }
