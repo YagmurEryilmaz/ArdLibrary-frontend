@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(private api : ApiService, private router: Router,private authService:AuthService,private alertifyService:AlertifyService) { }
 
   ngOnInit(): void {
-    //this.signIn();
     localStorage.clear();
   }
   signIn()
@@ -40,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.api.login(loginRequest).subscribe((res:any)=> {
       if(res)
       { 
-        console.log(res);
         this.token =res.AccessToken;
         this.tokeInfo=this.getDecodedAccessToken(this.token);
         localStorage.setItem("token",res.AccessToken);
@@ -48,7 +46,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("UserId",this.tokeInfo.nameid);
         localStorage.setItem("Role",this.tokeInfo.role);
         localStorage.setItem("isLoggedIn", "1");
-        console.log("hiiiii",this.validateEmail(this.tokeInfo.email))
         if(this.tokeInfo.role == "admin")
         {
           localStorage.setItem("isAdmin", "1");
@@ -68,8 +65,6 @@ export class LoginComponent implements OnInit {
   );
   }
 }
-
-
   validateEmail(email:any){
      if((email)
 			.toLowerCase()

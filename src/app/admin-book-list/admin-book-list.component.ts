@@ -52,9 +52,9 @@ export class AdminBookListComponent implements OnInit {
 
   deleteBook(id:number)
   {
-    if(confirm("Are you sure to delete? ")) {
+    if(confirm("Are you sure to delete the book? ")) {
       this.api.deleteBook(id).subscribe((res:any)=>{
-        alert("Book is successfully deleted")
+        alert("Book is successfully deleted.")
         window.location.reload();
       }, (err:any)=> {
         alert("Something went wrong on deletion!!")

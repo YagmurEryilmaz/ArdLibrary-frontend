@@ -10,22 +10,10 @@ import {Book} from '../model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
- 
 
-  constructor( private api: ApiService) {
+  constructor( private api: ApiService) {}
 
-   }
-
-   
-  ngOnInit(): void {
-    this.api.getBooks()
-
-      .subscribe((res: any)=> {
-        let t = res
-      });
-    
-  }
+  ngOnInit(): void {}
 
   
 

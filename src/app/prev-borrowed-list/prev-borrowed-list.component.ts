@@ -42,16 +42,8 @@ export class PrevBorrowedListComponent implements OnInit {
     
     
     this.api.getPrevBorrowedBooksById(id).subscribe((res: Borrow[])=> {
-      /*res.forEach(element => {
-        element.ExpDate.toLocaleDateString();
-      });*/
-        //deneme: res.forEach(r => console.log(new Date(r.ExpDate).getDate(), "hello", new Date(r.ExpDate).getDate()+2));
-        //this.books = res.filter(r => new Date(r.ExpDate).getDate()+2 < this.todaysDate.getDate());
-        //this.books.map((b:Borrow)=>b.Book.IsBorrowed =false)
         this.books =res;
-        //this.expDate = res.map(r=> new Date(r.ExpDate).getDate());
-        this.allBooks =res;
-        
+        this.allBooks =res;  
     });
   }
 
