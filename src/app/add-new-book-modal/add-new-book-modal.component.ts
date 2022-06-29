@@ -28,11 +28,8 @@ export class AddNewBookModalComponent implements OnInit {
     bookRequest.ImageUrl=(<HTMLInputElement>document.getElementById("url")).value;
     bookRequest.Subject=(<HTMLInputElement>document.getElementById("subject")).value;
 
-    var confirmation = (<HTMLInputElement>document.getElementById("confirmation")).value;
-    console.log("helloooo", confirmation);
-
     this.api.addBooks(bookRequest).subscribe((res:any)=> {
-      if(res&& confirmation == "on")
+      if(res)
       {
         alert("Book is successfully added!!")
         window.location.reload();
