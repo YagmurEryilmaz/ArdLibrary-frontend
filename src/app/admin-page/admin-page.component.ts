@@ -42,7 +42,7 @@ export class AdminPageComponent implements OnInit {
   {
     let dialogRef= this.borrowHistoryRef.open(BorrowHistoryModalComponent,
       {
-        width: "1200px",
+        width: "1000px",
         height:"830px",
       });
   }

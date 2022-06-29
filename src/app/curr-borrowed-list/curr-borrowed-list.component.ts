@@ -52,9 +52,11 @@ export class CurrBorrowedListComponent implements OnInit {
 
   deleteBorrowedBook(id:any)
   {
+    console.log("yeeeeeee",id);
     if(confirm("Are you sure to return the book?")){
     this.api.deleteBorrowedBook(id).subscribe((res:any)=>
     {
+      console.log("hiiiiiiii",res);
       alert("Borrowed book is successfully returned!!")
       window.location.reload();
     },(err:any)=> {

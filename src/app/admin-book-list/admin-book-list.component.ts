@@ -43,7 +43,6 @@ export class AdminBookListComponent implements OnInit {
 
   getBooks() {
     this.api.getBooks().subscribe((res: any)=> {
-      console.log(res);
       this.books = res;
       this.allBooks =res;
     });
