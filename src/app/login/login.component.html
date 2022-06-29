@@ -18,7 +18,7 @@
                  
   
                     <div class="form-outline mb-4">
-                      <input type="email" id="email" name="email" class="form-control" />
+                      <input type="email" id="email" name="email" class="form-control" ngModel [email]="true"/>
                       <label class="form-label my-2" for="form2Example11">Email Adress</label>
                     </div>
   
@@ -41,9 +41,8 @@
               <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                   <h4 class="mb-4">Welcome to Your Digital Library Recording System</h4>
-                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p class="small mb-0">This is an online library platform that you can see and borrow all the books that can be found in our database. 
+                    You can only borrow 5 books at the same time when you enter the system. Enjoy! </p>
                 </div>
               </div>
             </div>

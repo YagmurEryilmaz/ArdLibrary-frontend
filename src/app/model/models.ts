@@ -72,6 +72,7 @@
         public BookId !: number;
         public ExpDate!:Date;
         public Book!: Book
+        public User!:User;
     }
 
     export class PrevBorrow

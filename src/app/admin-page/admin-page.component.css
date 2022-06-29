@@ -31,3 +31,14 @@
     --bs-btn-disabled-border-color: #000000;
 }
 
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100%;  
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: center;
+        position:relative;
+    }
+    }
+

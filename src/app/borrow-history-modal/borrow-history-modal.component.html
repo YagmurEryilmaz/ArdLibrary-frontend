@@ -1,1 +1,31 @@
-<p>borrow-history-modal works!</p>
+
+<table class="table table-hover my-3" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User Email</th>
+        <th scope="col">Borrowed Book</th>
+        <th scope="col">Book ID</th>
+        <th scope="col">Borrow Date</th>
+        <th scope="col">Current Date</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let element of borrowList | paginate: {itemsPerPage: 10, currentPage: p}; let i = index " >
+        <th scope="row">{{i + 1}}</th>
+       <td>{{element.User.Email}}</td>
+        <td>{{element.Book.Title}}</td>
+        <td>{{element.Book.Id}}</td>
+        <td *ngIf="dateelement">{{dateelement[i]}}</td>
+        <td>{{todaysDate}}</td>
+       
+      </tr>
+    </tbody>
+  </table>
+  <div  style="float: right; margin-right: 55px;" >
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+ 
+
