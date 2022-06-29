@@ -30,6 +30,7 @@ import {PageEvent} from '@angular/material/paginator';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AddNewBookModalComponent } from './add-new-book-modal/add-new-book-modal.component';
 import { AdminBookListComponent } from './admin-book-list/admin-book-list.component';
+import { BorrowHistoryModalComponent } from './borrow-history-modal/borrow-history-modal.component';
 
 @NgModule({
   
@@ -49,6 +50,7 @@ import { AdminBookListComponent } from './admin-book-list/admin-book-list.compon
     AdminPageComponent,
     AddNewBookModalComponent,
     AdminBookListComponent,
+    BorrowHistoryModalComponent,
   ],
   imports: [
     BrowserModule,
