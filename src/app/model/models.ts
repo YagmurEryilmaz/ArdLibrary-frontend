@@ -90,5 +90,6 @@
         public Name!: string;
         public  Email!:string ;
         public Password!:number;
+        public Role!:string;
     }
   
