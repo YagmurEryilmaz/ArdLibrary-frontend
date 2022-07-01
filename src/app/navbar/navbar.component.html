@@ -15,13 +15,11 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-
           
           <input class="form-control mx-2" id= "searchArea"  type="text" name="searchTerm" onfocus="this.value=''" [(ngModel)]="filter" placeholder="Search" aria-label="Search"  > 
         
           <button class="btn btn-success" type="submit" (click)="filterEvent()">Search </button>
           <button id="logoutButton" class="btn mx-2" type="submit" (click)="logout()">Logout</button>
-
         </form>
       </div>
     </div>
