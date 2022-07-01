@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {Book} from '../model';
-import { Borrow, User, BorrowDto } from '../model/models';
+import { Borrow, User, BorrowDto, PrevBorrow, BorrowAddDto } from '../model/models';
 import{ApiService} from "../service/api.service";
 import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal.component';
 
@@ -14,6 +14,7 @@ import { ShowDetailModalComponent } from '../show-detail-modal/show-detail-modal
 })
 export class CurrBorrowedListComponent implements OnInit {
   borrowedBooks!: Book[];
+  prevBooks!:Borrow[];
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
   dateelement!:string[];
