@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -15,33 +16,52 @@ export class CurrBorrowedListComponent implements OnInit {
   borrowedBooks!: Book[];
   id = parseInt(localStorage['UserId']);
   todaysDate!:Date;
+  dateelement!:string[];
+  parsedExp!:Date[];
 
   constructor(private api:ApiService, private showDetailRef: MatDialog) { }
 
   ngOnInit(): void {
-    this.getBorrowedBooksById(this.id);
+    this.getCurrBorrowedBooksById(this.id);
+    this.getExpDate(this.id);
   }
 
-  getBorrowedBooksById(id:any)
+  getCurrBorrowedBooksById(id:any)
   {
     this.todaysDate= new Date();
-    this.api.getBorrowedBooksById(id).subscribe((res: Borrow[])=> {
-   
+    this.api.getCurrBorrowedBooksById(id).subscribe((res: Borrow[])=> {
         console.log(res);
-        this.borrowedBooks = res.filter(r => new Date(r.ExpDate).getDate()+7 > this.todaysDate.getDate()).map((t: Borrow) => t.Book);;
+        this.borrowedBooks = res.map((t: Borrow) => t.Book);
+       
     
     });
   }
 
+  getExpDate(id:number){
+    var dateelement: string[] = []
+      this.api.getRealExpDate(id).subscribe((res:Date[])=>{
+          this.parsedExp=res;
+          this.parsedExp.forEach(element => {
+            dateelement.push(formatDate(element, 'dd/MM/yyy','en-US'))
+            this.dateelement=dateelement;
+          });
+      })
+   
+  }
+
   deleteBorrowedBook(id:any)
   {
+    console.log("yeeeeeee",id);
+    if(confirm("Are you sure to return the book?")){
     this.api.deleteBorrowedBook(id).subscribe((res:any)=>
     {
+      console.log("hiiiiiiii",res);
       alert("Borrowed book is successfully returned!!")
       window.location.reload();
     },(err:any)=> {
       alert("Something went wrong!!")
     });
+  }
   }
  
   openDetail(bookId:any):void
@@ -55,6 +75,4 @@ export class CurrBorrowedListComponent implements OnInit {
     });
 
   }
-
-
 }

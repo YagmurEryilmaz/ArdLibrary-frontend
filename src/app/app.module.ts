@@ -26,7 +26,11 @@ import { AuthGuard } from './auth/auth.guard';
 import { ListFilterPipe } from './listFilterPipe';
 import { FilterComponent } from './filter/filter.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import {PageEvent} from '@angular/material/paginator';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AddNewBookModalComponent } from './add-new-book-modal/add-new-book-modal.component';
+import { AdminBookListComponent } from './admin-book-list/admin-book-list.component';
+import { BorrowHistoryModalComponent } from './borrow-history-modal/borrow-history-modal.component';
 
 @NgModule({
   
@@ -43,10 +47,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     ListFilterPipe,
     FilterComponent,
-    
-
-    
-
+    AdminPageComponent,
+    AddNewBookModalComponent,
+    AdminBookListComponent,
+    BorrowHistoryModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatFormFieldModule,
     MatInputModule,
     ShowDetailModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [{ provide: MAT_DIALOG_DATA, useValue: [] }],
   bootstrap: [AppComponent]

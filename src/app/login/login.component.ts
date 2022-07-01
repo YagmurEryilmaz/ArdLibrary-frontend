@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(private api : ApiService, private router: Router,private authService:AuthService,private alertifyService:AlertifyService) { }
 
   ngOnInit(): void {
-    this.signIn();
     localStorage.clear();
   }
   signIn()
@@ -28,29 +27,54 @@ export class LoginComponent implements OnInit {
     let loginRequest = new LoginDto();
     loginRequest.Email= (<HTMLInputElement>document.getElementById("email")).value;
     loginRequest.Password= (<HTMLInputElement>document.getElementById("password")).value;
+    if(!this.validateEmail(loginRequest.Email))
+    {
+      alert("Please enter a valid email!!")
+    }
+    else if(loginRequest.Password === "" || loginRequest.Email==="")
+    {
+      alert("Please fill the required fields!")
+    }
+    else{
     this.api.login(loginRequest).subscribe((res:any)=> {
       if(res)
       { 
-        
-        console.log(res);
         this.token =res.AccessToken;
         this.tokeInfo=this.getDecodedAccessToken(this.token);
         localStorage.setItem("token",res.AccessToken);
-        localStorage.setItem("Email", this.tokeInfo.Email);
+        localStorage.setItem("Email", this.tokeInfo.email);
         localStorage.setItem("UserId",this.tokeInfo.nameid);
-        console.log(this.tokeInfo.nameid);
-        this.authService.isLoggedIn=true; 
+        localStorage.setItem("Role",this.tokeInfo.role);
         localStorage.setItem("isLoggedIn", "1");
-        this.router.navigate(["home"]);
-
+        if(this.tokeInfo.role == "admin")
+        {
+          localStorage.setItem("isAdmin", "1");
+          this.router.navigate(["admin-page"]);
+        }
+        else{
+          this.router.navigate(["home"]);
+        }
       }
-      else alert("User not found")
+      else
+      {
+        alert("User not found!!")
+      }
     }, (err:any)=> {
         alert("Something went wrong!!")
       }
   );
   }
-
+}
+  validateEmail(email:any){
+     if((email)
+			.toLowerCase()
+			.match(
+				/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+      )){
+        return true
+      }
+      else return false
+	}
   getDecodedAccessToken(token: string): any {
     try {
       return jwt_decode(token);

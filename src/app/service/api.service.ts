@@ -48,14 +48,7 @@ import {
       }
     getBorrowedBooks(){
         return this.http.get<Array<Borrow>>(
-          "https://localhost:7109/api/Borrow",
-          { headers: new HttpHeaders(this.httpOptions) }
-        );
-      }
-
-      getPrevBorrowedBooks(){
-        return this.http.get<Array<PrevBorrow>>(
-          "https://localhost:7109/api/PrevBorrow",
+          "https://localhost:7109/api/Borrow/getBorrowedBooks",
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
@@ -70,10 +63,12 @@ import {
         );
       }
 
-      addPrevBorrowedBooks(data: BorrowAddDto) {
+      addBooks(data: BookDto) {
         console.log(data);
-          return this.http.post<BorrowDto>(
-            "https://localhost:7109/api/PrevBorrow",
+
+          return this.http.post<BookDto>(
+            "https://localhost:7109/api/Book/addBook",
+
             data,
             { headers: new HttpHeaders(this.httpOptions) }
           );
@@ -90,7 +85,31 @@ import {
       getPrevBorrowedBooksById(id:number){
         console.log(id);
         return this.http.get<Array<Borrow>>(
-          "https://localhost:7109/api/PrevBorrow/GetPrevBorrowedBooksById/" +id,
+          "https://localhost:7109/api/Borrow/GetPrevBorrowedBooksById/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      getBorrowDate(id:number){
+        console.log(id);
+        return this.http.get<Array<Date>>(
+          "https://localhost:7109/api/Borrow/GetBorrowDate/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      getRealExpDate(id:number){
+        console.log(id);
+        return this.http.get<Array<Date>>(
+          "https://localhost:7109/api/Borrow/GetRealExpDate/" +id,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      getCurrBorrowedBooksById(id:number){
+        console.log(id);
+        return this.http.get<Array<Borrow>>(
+          "https://localhost:7109/api/Borrow/GetCurrentlyBorrowedBooksById/" +id,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }
@@ -105,6 +124,13 @@ import {
       deleteBorrowedBook(id: number) {
         return this.http.delete<any>(
           `https://localhost:7109/api/Borrow/${id}`,
+          { headers: new HttpHeaders(this.httpOptions) }
+        );
+      }
+
+      deleteBook(id: number) {
+        return this.http.delete<any>(
+          `https://localhost:7109/api/Book/${id}`,
           { headers: new HttpHeaders(this.httpOptions) }
         );
       }

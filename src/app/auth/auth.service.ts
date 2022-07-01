@@ -4,11 +4,14 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false;
+  //isLoggedIn = false;
   constructor(private httpService: HttpClient ) {}
 isAuthenticated(){
 let d= localStorage.getItem("isLoggedIn");
-
     return d=="1";
   }
+isAdminLogin(){
+    let d= localStorage.getItem("isAdmin");
+        return d=="1";
+      }
 }

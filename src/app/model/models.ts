@@ -14,6 +14,11 @@
         public Title!: string;
         public  AuthorName!:string ;
         public IsBorrowed!:boolean;
+        public PublishYear !: number;
+        public ImageUrl !:string ;
+        public  Subject!:string ;
+        public Genre !:string ;
+        public Language!:string ;
     }
 
    export class BorrowDto
@@ -65,8 +70,9 @@
         public Id !: number;
         public UserId !: number;
         public BookId !: number;
-        public ExpDate!:any;
+        public ExpDate!:Date;
         public Book!: Book
+        public User!:User;
     }
 
     export class PrevBorrow
@@ -84,5 +90,6 @@
         public Name!: string;
         public  Email!:string ;
         public Password!:number;
+        public Role!:string;
     }
   

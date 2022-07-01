@@ -14,3 +14,20 @@
   .navbar-link:active {
     color: rgb(147, 145, 232);
   }
+
+img{
+  height:50px;
+  width: 60px;
+
+}
+#logoutButton
+{
+  background-color: #b44593;
+  border: none;
+  color: white;
+}
+#logoutButton:hover
+{
+  background-color: #88316e;
+  border: none;
+}

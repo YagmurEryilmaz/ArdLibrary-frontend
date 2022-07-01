@@ -1,0 +1,37 @@
+<form>
+    <div class="form-group my-2">
+      <label for="exampleInputEmail1">Title</label>
+      <input id="title" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Title">
+    </div>
+    <div class="form-group my-2">
+      <label for="exampleInputPassword1">Author Name</label>
+      <input id="author" type="text" class="form-control" placeholder="Enter Author Name">
+    </div>
+    <div class="form-group my-2">
+        <label for="exampleInputPassword1">Publish Year</label>
+        <input id="year" type="number" class="form-control" placeholder="Enter Publish Year">
+      </div>
+      <div class="form-group my-2">
+        <label for="exampleInputPassword1">Genre</label>
+        <input id="genre" type="text" class="form-control" placeholder="Enter Genre">
+      </div>
+      <div class="form-group my-2">
+        <label for="exampleInputPassword1">Language</label>
+        <input id="lang" type="text" class="form-control" placeholder="Enter Language">
+      </div>
+      <div class="form-group my-2">
+        <label for="exampleInputPassword1">Image</label>
+        <input id="url" type="text" class="form-control" placeholder="Enter Image Url">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Subject</label>
+        <textarea id="subject" class="form-control" rows="4"></textarea>
+      </div>
+    
+    <div class="form-check my-2">
+      <input class="form-check-input" id="checkbox" type="checkbox" name="sendemail" [(ngModel)]="isChecked">
+      <label class="form-check-label" for="checkbox">I confirm the validity of book info.</label>
+    </div>
+    <button *ngIf="isChecked else other_content" type="submit" class="btn btn-primary" (click)="addBooks()">Add Book</button>
+    <ng-template #other_content> <button type="submit" class="btn btn-primary" (click)="addBooks()" disabled >Add Book</button> </ng-template>
+  </form>

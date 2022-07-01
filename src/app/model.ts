@@ -13,6 +13,7 @@ export interface User{
     Email:string;
     Id:number;
     Password:string;
+    Role:string;
 }
 
 export interface Borrow

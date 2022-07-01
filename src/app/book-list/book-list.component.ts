@@ -21,14 +21,21 @@ export class BookListComponent implements OnInit {
   filter:any;
   id = parseInt(localStorage['UserId']);
   p!: any;
+  parsedExpDate!:string;
 
-  constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService) { 
+ 
+  constructor(private api: ApiService, private alertify:AlertifyService,private showDetailRef: MatDialog, private sharedComp: SharedDataService ) { 
     sharedComp.currentMessage.subscribe((res:string)=> {
       this.filter = res;
       this.search(res);
     })
   }
-
+  
+  filteredList(currentList:Book[])
+   {
+     this.currentList=currentList;
+     this.books=currentList;
+   }
   ngOnInit(): void {
     this.getBooks();
   
@@ -40,7 +47,7 @@ export class BookListComponent implements OnInit {
       this.books = res;
       this.allBooks =res;
     });
-  
+
   }
   addBorrow(bookId:number)
   {
@@ -54,8 +61,12 @@ export class BookListComponent implements OnInit {
 
  
     this.api.addBorrowedBooks(addBorrowDto).subscribe((res: any)=> {
-      console.log(res);
+     if(confirm("Are you sure to borrow this book? \nThe book should be returned in 7 days and you cannot borrow more than 5 books at the same time." ))
+     {
       alert("Book is successfully borrowed!!")
+      window.location.reload();
+     }
+      console.log("hello",res);
     }, (err:any)=> {
       alert("You cannot borrow more than 5 books!!");
     });
@@ -68,11 +79,12 @@ export class BookListComponent implements OnInit {
     let dialogRef= this.showDetailRef.open(ShowDetailModalComponent,
     {
       width: "863px",
-      height:"642px",
+      height:"auto",
     });
 
   }
   search(value: string): void {
+    this.p = 1;
     this.books = this.allBooks?.filter((val) => val.Title.toLowerCase().includes(value) || val.AuthorName.toLowerCase().includes(value)  || val.Genre.toLowerCase().includes(value) || val.Language.toLowerCase().includes(value) || val.PublishYear.toString().includes(value));
   }
 }

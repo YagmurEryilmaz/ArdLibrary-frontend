@@ -1,31 +1,42 @@
-<div class="container">
-<form>
-    <div class="row">
-      <div class="form-group col-md-3">
-        <label for="inputCity">Author Name</label>
-        <input type="text" id="authorName" class="form-control" id="authorName">
+
+<div class="filterButton" [class.show]="show">
+  <div class="container ">
+    <form>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Author Name</label>
+            <input class="form-control" type="text" id="authorName">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Publish Year</label>
+            <input class="form-control" type="text" id="publishYear">
+          </div>
+        </div>
+        <div class="row ">
+          <div class="form-group col-md-6">
+    
+            <label>Genre</label>
+            <select id="genre" class="form-control">
+              <option selected value="" disabled selected hidden>Choose...</option>
+              <option *ngFor="let genre of genres "> {{genre}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Language</label>      
+            <select id="language" class="form-control">
+              <option selected value="" disabled selected hidden>Choose...</option>
+              <option *ngFor="let lang of languages "> {{lang}}</option>
+            </select>
+            
+          </div>
+        </div>
+        <div>
+          <button id="filterButton" class="btn my-2 " style="float:right" (click)= "clear()">Clear</button>
+          <button id="filterButton" type="submit" class="btn my-2 mx-2" style="float:right" (click)="filter()">Apply</button>
+
       </div>
-      <div class="form-group col-md-3">
-        <label for="inputCity">Publish Year</label>
-        <input type="text" id="publishYear"  class="form-control" id="publishYear">
-      </div>
+      </form>
     </div>
-    <div class="row ">
-      <div class="form-group col-md-3">
-        <label for="inputState">Genre</label>
-        <select id="genre" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputState">Language</label>
-        <select id="language" class="form-control">
-          <option selected>Choose...</option>
-          <option>...</option>
-        </select>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary my-2" (click)="filter()">Apply</button>
-  </form>
 </div>
+<button id="closeButton" class="btn my-2 "  style="float:right" (click)="show = !show">{{ show ? 'Close': 'Filter' }}</button>
+
